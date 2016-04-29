@@ -3,8 +3,7 @@ $(function(){
 	var shiFlag = true, xianFlag = true;
 	var shengCode,shiCode;
 	var province,city,county;
-	
-	
+		
 	function resize(){
 		var height = (document.body.clientHeight - 214)+"px";
 		$("#container").height(height);
