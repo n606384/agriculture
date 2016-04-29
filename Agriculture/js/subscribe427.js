@@ -91,29 +91,9 @@ $(function(){
 					        
 						}).on('onSetSelectValue', function(e,keyword,data){
 							console.log('onSetSelectValue: ', keyword, data);
-							shengCode = keyword.id;										
+							shengCode = keyword.id;				
 							
-							/*
-							shiAttr.value = [];
 							
-							if(city.length > 0){								
-								for(var i = 0; i< city.length;i++){
-									if(city[i].city.parentID==selValue){
-										var obj =
-										{
-											"编号":(i+1),
-											"行政区编码":city[i].city.cityID,
-											"名称":city[i].city.cityName
-										};
-										shiAttr.value.push(obj);
-										
-									}
-																		
-								}
-								//console.log("shiAttr", shiAttr);
-								
-							}
-							*/
 							
 							//第一次加载的时候初始化市选择器
 							if(shiFlag){
