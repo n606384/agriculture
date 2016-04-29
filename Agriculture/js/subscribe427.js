@@ -4,6 +4,7 @@ $(function(){
 	var shengCode,shiCode;
 	var province,city,county;
 	
+	
 	function resize(){
 		var height = (document.body.clientHeight - 214)+"px";
 		$("#container").height(height);
@@ -54,6 +55,7 @@ $(function(){
 							//p.dis;
 							xianAttr.value.push(obj);
 						});
+						
 						/*输出json文件
 						//console.log("shengAttr",JSON.stringify(shengAttr));
 						//console.log("shiAttr",JSON.stringify(shiAttr));
@@ -61,6 +63,7 @@ $(function(){
 						//var xian =JSON.stringify(xianAttr);
 						//console.log("xianAttr",JSON.stringify(xianAttr));
 						输出json文件******/
+						
 						$("#shiIpt").bsSuggest({
 							ignorecase:true,
 							showHeader:true,
@@ -92,9 +95,7 @@ $(function(){
 						}).on('onSetSelectValue', function(e,keyword,data){
 							console.log('onSetSelectValue: ', keyword, data);
 							shengCode = keyword.id;				
-							
-							
-							
+														
 							//第一次加载的时候初始化市选择器
 							if(shiFlag){
 								$("#shiIpt").bsSuggest({
@@ -108,29 +109,7 @@ $(function(){
 								}).on('onSetSelectValue', function(e,keyword,data){
 									console.log('xianAttr onSetSelectValue: ', keyword, data);
 									var selValue = keyword.id;
-									
-									
-									/*	
-									 * 
-									xianAttr.value = [];
-									if(county.length > 0){
-										
-										for(var i = 0; i< county.length;i++){
-											if(county[i].dis.parentID==selValue){
-												var obj =
-												{
-													"编号":(i+1),
-													"行政区编码":county[i].dis.disID,
-													"名称":county[i].dis.disName
-												};
-												xianAttr.value.push(obj);
-											}
-																				
-										}
-										//console.log("xianAttr", xianAttr);										
-									}
-									*/
-									
+																		
 									if(xianFlag){
 										
 										$("#xianIpt").bsSuggest({							
@@ -208,9 +187,23 @@ $(function(){
 		
 	});
 	$("#submitUser").on("click",function(){
-		
-		
+		//alert("222");
+		$.ajax({
+			type:"post",
+			url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX?token=sdsd",
+			async:true,
+			data:{
+				"ssqx":110105
+			},
+			success:function(res){
+				console.log("res",res);
+			},
+			error:function(er){
+				console.log("er",er);
+			}
+		});
 		
 	});
+	
 	
 });
