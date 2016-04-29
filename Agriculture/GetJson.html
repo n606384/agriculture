@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">		
+		<script src="js/jquery-1.11.2.min.js" type="text/javascript"> </script>
+		<script type="text/javascript">
+			$(function(){				
+				//http://192.168.44.231:5000/cn
+				
+				function getParamFromHref(strName){
+					var urlHref = window.document.location.href;
+					var intPos = urlHref.indexOf("?");
+					var params = urlHref.substr(intPos+1);
+					var attParams = params.split("&");
+					for(var i = 0; i < attParams.length;i++){
+						var param = attParams[i].split("=");
+						if(param[0].toLowerCase()===strName){
+							return param[1];
+						}
+						else return "";
+					}
+				}
+				var token = getParamFromHref("token");
+				var postUrl = "http://192.168.44.231:5000/cn?token="+token;
+				console.log("postUrl", postUrl);
+				$.getJSON(postUrl,function(data){//使用getJson()方法发送请求并接收Json格式数据
+					var data = data;//获取响应数据
+					
+					var str="<table border=1 width=100%>";//定义字符串临时变量
+					str+="<tr><th>名称</th><th>内容</th></tr>";
+					
+					for(var i = 0; i<data.length;i++){
+						for(var key in data[i]){
+							//console.log(key, data[i][key]);								
+							var attr = data[i][key];
+							
+							for(var key in attr){
+								console.log(key,attr[key]);
+								str += "<tr><td>"+key+"</td><td>"+attr[key]+"</td></tr>";
+							}
+							
+						}
+					}
+					
+					str+="</table>";
+					$("div").html(str);//把临时字符串以HTml格式嵌入到div元素中显示
+				});				
+			});
+		</script>
+		<title></title>
+	</head>
+	<body>		
+		<div></div>
+	</body>
+</html>
