@@ -119,6 +119,52 @@ $(function(){
 											indexId: 1,  //data.value 的第几个数据，作为input输入框的内容
 									        indexKey: 2, //data.value 的第几个数据，作为input输入框的内容
 									        data: xianAttr
+										}).on('onSetSelectValue', function(e,keyword,data){
+											app.xianbm = keyword.id;
+											console.log("app.xianbm",app);
+											
+											$.ajax({
+												type:"post",
+												url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX",
+												async:true,
+												data:{
+													"ssqx":app.xianbm
+												},
+												dataType:"json",
+												success:function(res){
+													console.log(res);
+													if(res.length>0){
+														var data = res[0];
+														$("#hjdwmc").val(data.hjdwmc);
+														$('#hjdwdz').val(data.hjdwdz);
+														var xz = "";
+														console.log("app.hjdwxzList",app.hjdwxzList)
+//														app.hjdwxzList.each(function(e){
+//															if(data.hjdwxz == e.bm){
+//																xz = e.name;
+//																break;
+//															}
+//														});
+														
+														$('#hjdwxz').val(xz);
+														if(res[0].hjdwry.length > 0){
+															var person = res[0].hjdwry[0];
+															console.log("person",person);
+															$("#hjrxm").val(person.hjrxm);
+															$('#lxdh').val(person.lxdh);
+															$('#lxyx').val(person.lxyx);
+															$('#txdz').val(person.txdz);
+														}
+														
+													}
+													
+													
+												},
+												error:function(err){
+													console.log("出错了",err);
+												}
+											});
+											
 										});
 										
 										xianFlag = false;
