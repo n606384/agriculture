@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>农村土地确权汇交管理系统</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<script src='js/prefixfree.min.js'></script>
+	<script src="js/app.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div id="logo">
+  <h1 class="hogo"><i>农村承包土地数据汇交管理系统</i></h1>
+</div> 
+<section class="stark-login">
+	<!--
+		大俠：http://192.168.44.231:
+		服務器：http://192.168.199.146
+		action="http://192.168.44.231:5000/login"
+	-->
+  <form id="login">
+    <div id="fade-box">
+      <input type="text" name="dlm" id="name" placeholder="用户名" required>
+      <input type="password" name="mm" id="passport" placeholder="密  码" required>      
+      <input type="submit" value="登   录">
+      <span id="tips" style="color: red;font-weight: bold;"></span>
+    </div>
+     <script type="text/javascript">
+	  	$('#login').submit(function(e){
+//	  		console.log(e);
+//	  		return false;
+			
+			var flag = false;
+			var name = $('#name').val();
+			var mm = $('#passport').val();
+			$.ajax({
+				type:"post",
+				url:"http://192.168.44.231:8080/rest/login",
+				async:true,
+				data:$('#login').serialize(),
+				dataType:"json",
+				success:function(res){	
+					console.log("进入登录页面",res);
+					if(res.login === "success"){
+						app.token = res.token;
+						app.serId = res.id;
+						console.log(app.token);
+						flag = true;
+						//window.location.href = "GetJson.html?token="+app.token;
+						$.ajax({
+							type:"post",
+							url:"http://192.168.44.231:5000/hjyy/getHJDWXX?token="+app.token,
+							async:true,
+							data:{
+								"ssqx":110105
+							},
+							success:function(data){
+								console.log("用户列表",data);
+							}
+						});
+					}else if(res.login === "error"){
+						document.getElementById("tips").innerText = "用户名或密码错误，请重新输入！";
+						$('#tips').text("用户名或密码错误，请重新输入！");
+					}
+					
+				},
+				error:function(err){
+					//console.log("登錄失敗",err);
+					flag = false;
+				}
+				
+			});
+			return flag;
+	  	});
+	  </script>
+  </form>
+ 
+      <div class="hexagons">
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <span>&#x2B22;</span>
+        <br>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <span>&#x2B22;</span>
+          <br>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span> 
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            <span>&#x2B22;</span>
+            
+            <br>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <span>&#x2B22;</span>
+              <br>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+                <span>&#x2B22;</span>
+              </div>
+        </section> 
+    
+        <div id="circle1">
+          <div id="inner-cirlce1">
+            <h2> </h2>
+          </div>
+        </div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+	
+</body>
+</html>
