@@ -20,9 +20,10 @@ $(function(){
 	$('#container').empty();
 	
 	$("#btnLeft").on('click', function(){
-		if(app.hjyyProgress<2) return;
+		if(app.hjyyProgress<1) return;
 		var flag = app.hjyyProgress-=1;
-		console.log("flag, app.hjyyProcess", flag, app.hjyyProgress);
+		
+		console.log("btnLeft clicked and its flag, app.hjyyProcess", flag, app.hjyyProgress);
 		if(app.hjyyProgress < 5){
 			$('#btnRight').html("下一步");
 		}
@@ -30,13 +31,18 @@ $(function(){
 		//状态颜色改变
 		$("div.statusPane>div").attr("class","statusCircleDeactive");				
 		$("div.statusPane>div>div").attr("class","statusCircleSMDeactive");
-		
+				
 		$("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div").attr("class","statusCircleActive");
 		$("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div>div").attr("class","statusCircleSMActive");
 		
 		//页面显示内容改变
 		$("#container>div").attr('class','seg-invisible');
-		$("#container>div:eq("+parseInt(flag-1)+")").attr('class','seg-visible');
+		if(flag == 0){
+			$("#container>div:eq(0)").attr('class','seg-visible');
+		}else{
+			$("#container>div:eq("+parseInt(flag-1)+")").attr('class','seg-visible');
+		}
+		
 		
 		if(flag == 0){
 //			$('#btnLeft').html("重 置");
@@ -60,7 +66,7 @@ $(function(){
 	$("#btnRight").on("click", function(){
 		if(app.hjyyProgress >4) return;
 		var flag = app.hjyyProgress+=1;
-		console.log("flag, app.hjyyProcess",flag,app.hjyyProgress);
+		console.log("btnRight clicked and its flag, app.hjyyProcess",flag,app.hjyyProgress);
 		
 		//状态颜色改变
 		$("ui.statusMenu li>div[class=statusPane]>div").attr("class","statusCircleDeactive");
@@ -110,7 +116,7 @@ $(function(){
 	var i = 1;
 	initContainer(i);
 	function initContainer(i){		
-		console.log("i",i);
+		
 		if(i >5) return;
 		
 		$.ajax({

@@ -378,9 +378,10 @@ html,body{
 }
 .operBottomPane{
 	height: 40px;
-	width: 100%;
+	width: 95%;
 	text-align: center;
 	margin: 15px auto;
+	
 }
 .operBottomPane button{
 	width: 100px;
