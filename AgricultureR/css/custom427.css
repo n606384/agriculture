@@ -5,6 +5,11 @@ html,body{
 	padding: 0;
 	overflow: hidden;
 }
+form ul li:hover{
+	cursor: pointer !important;
+	background-color: #F8F8F8;
+	
+}
 .banner{
 	width: 100%;
 	background-color: #229a56;

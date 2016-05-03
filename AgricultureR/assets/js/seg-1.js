@@ -3,15 +3,17 @@ $(function(){
 	var shiFlag = true, xianFlag = true;
 	var shengCode,shiCode;
 	var province,city,county;
+	var userTree;
 	function resize(){
 		var height = (document.body.clientHeight - 324)+"px";
 		$("#container").height(height);
 	}
 	window.onresize = resize();
-	$.ajax({
+	//行政区三级表格
+	var promise = $.ajax({
 				type:"get",
 				url:"json/district.json",
-				async:true,				
+				async:false,				
 				dataType:"json",
 				success:function(res){
 					//console.log("获取行政区json数据",res);
@@ -169,21 +171,59 @@ $(function(){
 										dataType:"json",
 										success:function(res){
 											console.log(res);
+											userTree = res;
 											if(res.length>0){
+												
+//												$("#hjdwmcList").empty();
+//												$("#hjdwdzList").empty();
+//												$("#hjrxmList").empty();
+//												$("#lxdhList").empty();
+//												$("#lxyxList").empty();
+//												$("#txdzList").empty();
+//												
+												var mcStr = "",dzStr = "";
+												for(var i = 0; i<res.length;i++){
+													var dataset = res[i];
+													
+													 mcStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwmc+"'>"+dataset.hjdwmc+"</li>";
+													 dzStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwdz+"'>"+dataset.hjdwdz+"</li>";
+																										
+												}
+												$("#hjdwmcList").html(mcStr);
+												$("#hjdwdzList").html(dzStr);
+												
 												var data = res[0];
 												$("#hjdwmc").val(data.hjdwmc);
 												$('#hjdwdz').val(data.hjdwdz);
-												var xz = "";
-												//console.log("app.hjdwxzList",app.hjdwxzList)
-//														app.hjdwxzList.each(function(e){
-//															if(data.hjdwxz == e.bm){
-//																xz = e.name;
-//																break;
-//															}
-//														});
+												if(parseInt(data.hjdwxz)==1003001){
+													$('#hjdwxz').val("农业系统单位");
+													
+												}else if(parseInt(data.hjdwxz)==1003001){
+													$('#hjdwxz').val("开发商");
+												}																																	
 												
-												$('#hjdwxz').val(xz);
 												if(res[0].hjdwry.length > 0){
+													
+													//填充用户信息下拉列表
+													var xmStr="",dhStr="", yxStr="", dzStr="";
+													for(var i = 0;i<res[0].hjdwry.length;i++){
+														var dataset = res[0].hjdwry[i];
+														
+														 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
+														 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
+														  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
+														   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
+														
+													}
+													
+													$("#hjrxmList").html(xmStr);
+													$("#lxdhList").html(dhStr);
+													$("#lxyxList").html(yxStr);
+													$("#txdzList").html(dzStr);
+													
+													
+													
+													//初始化用户信息
 													var person = res[0].hjdwry[0];
 													//console.log("person",person);
 													$("#hjrxm").val(person.hjrxm);
@@ -191,6 +231,99 @@ $(function(){
 													$('#lxyx').val(person.lxyx);
 													$('#txdz').val(person.txdz);
 												}
+												
+												$("#hjdwmcList li").on('click', function(e){
+													console.log("汇交单位名称",e);
+													var dataset = e.target.dataset;
+													var id = dataset.id;
+													var name = dataset.name;
+													console.log("userTree",userTree);
+													for(var i = 0;i<userTree.length;i++){
+														if(name.trim() == userTree[i].hjdwmc){
+															var data = res[i];
+															$("#hjdwmc").val(data.hjdwmc);
+															$('#hjdwdz').val(data.hjdwdz);
+															if(parseInt(data.hjdwxz)==1003001){
+																$('#hjdwxz').val("农业系统单位");
+																
+															}else if(parseInt(data.hjdwxz)==1003001){
+																$('#hjdwxz').val("开发商");
+															}
+															//更新初始化用户信息
+															var person = userTree[i].hjdwry[0];
+															//console.log("person",person);
+															$("#hjrxm").val(person.hjrxm);
+															$('#lxdh').val(person.lxdh);
+															$('#lxyx').val(person.lxyx);
+															$('#txdz').val(person.txdz);
+															//填充用户信息下拉列表
+															var xmStr="",dhStr="", yxStr="", dzStr="";
+															for(var j = 0;j<userTree[i].hjdwry.length;j++){
+																var dataset = userTree[i].hjdwry[j];
+																
+																 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
+																 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
+																  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
+																   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
+																
+															}
+															
+															$("#hjrxmList").html(xmStr);
+															$("#lxdhList").html(dhStr);
+															$("#lxyxList").html(yxStr);
+															$("#txdzList").html(dzStr);
+															
+														}
+													}
+													
+												});
+										
+												$("#hjrxmList li").on('click', function(e){
+													
+													console.log("汇交人员名称",e);
+													var dataset = e.target.dataset;
+													var id = dataset.id;
+													var name = dataset.name;
+													
+													for(var i = 0;i<userTree.length;i++)
+														for(var j = 0;j<userTree[i].hjdwry.length;j++){
+															var person = userTree[i].hjdwry[j];
+															if(name.trim() == person.hjrxm){
+																$("#hjrxm").val(person.hjrxm);
+																$('#lxdh').val(person.lxdh);
+																$('#lxyx').val(person.lxyx);
+																$('#txdz').val(person.txdz);
+															}
+														
+													}
+											
+												});
+												
+												$("#hjdwdzList li").on('click', function(e){
+													//console.log("汇交单位性质",$(this)[0].dataset);
+													
+													$("#hjdwdz").val($(this)[0].dataset.name);
+															
+												});
+												
+												$("#lxyxList li").on('click', function(e){
+													//console.log("汇交单位性质",$(this)[0].dataset);
+													
+													$("#lxyx").val($(this)[0].dataset.name);
+															
+												});
+												$("#txdzList li").on('click', function(e){
+													//console.log("汇交单位性质",$(this)[0].dataset);
+													
+													$("#txdz").val($(this)[0].dataset.name);
+															
+												});
+												$("#lxdhList li").on('click', function(e){
+													//console.log("汇交单位性质",$(this)[0].dataset);
+													
+													$("#lxdh").val($(this)[0].dataset.name);
+															
+												});
 												
 											}
 											
@@ -217,8 +350,20 @@ $(function(){
 				}
 				
 			});
-						
+			
 	
+	
+				
+	$("#hjdwxzList li").on('click', function(e){
+		//console.log("汇交单位性质",$(this)[0].dataset);
+		
+		$("#hjdwxz").val($(this)[0].dataset.name);
+				
+	});
+	
+	
+	
+	//行政区输入框置空
 	$("#resetDistrict").on('click', function(){
 		
 		$("#shengIpt").val("");
@@ -227,32 +372,124 @@ $(function(){
 		$("#xianIpt").val("");
 		//$("#xianDropdownMenu").empty();
 	});
-	$("#resetUser").on("click",function(){
+	//保存
+	$("#saveBtnHJYY").on('click',function(){
+						
+		var formdata={};
+		var addOrg = 0;
+		var addUser = 0;
+		/*****单位提交信息******/
+		var hjdwbmFD="-1";
+		var hjdwmcFD = $("#hjdwmc").val();
+		var hjdwxzFD = $("#hjdwxz").val();
+		if(hjdwxzFD.trim() == "农业系统单位"){
+			hjdwxzFD = 1003001;
+		}else if(hjdwxzFD.trim() == "农业系统单位"){
+			hjdwxzFD = 1003002;
+		}
+		var hjdwdzFD = $("#hjdwdz").val();
 		
-		$("#hjdwxz").val("");		
-		$("#hjdwmc").val("");
-		$("#hjdwdz").val("");
-		$("#hjrxm").val("");
-		$("#lxdh").val("");
-		$("#lxyx").val("");
-		$("#txdz").val("");
+		/******用户信息********/
+		var hjrybmFD = "-1";
+		var hjrxmFD = $("#hjrxm").val();
+		var	lxdhFD = $("#lxdh").val();
+		var	lxyxFD = $("#lxyx").val();
+		var	txdzFD = $("#txdz").val();
 		
-	});
-	$("#submitUser").on("click",function(){
+		/***判断增加和修改的状态****/
+		if(userTree){
+			for(var i=0;i<userTree.length;i++){
+				if(hjdwmcFD.trim() == userTree[i].hjdwmc){
+					addOrg = 1;
+					hjdwbmFD = userTree[i].hjdwbm;
+				}else if(hjdwmcFD.trim() ==""){
+					return;
+				} else{
+					addOrg = 0;
+					addUser = 0;
+					hjdwbmFD = -1;
+				}
+				for(var j = 0; j<userTree[i].hjdwry.length;j++){
+					var person = userTree[i].hjdwry[j];
+					if(hjrxmFD.trim() == person.hjrxm){
+						addUser = 1;
+						hjrybmFD = person.hjrybm;
+					}else if(hjrxmFD.trim() == ""){
+						return;
+					} else {
+						addUser = 0;
+					}
+					
+				}
+			}
+		}
 		
-		$('#container').empty();
+		formdata = {
+			"sfzjdwxx":addOrg,
+			"sfzjryxx":addUser,
+			"hjdwxz":hjdwxzFD,
+			"hjdwbm":hjdwbmFD,
+			"hjdwmc":hjdwmcFD,
+			"xzqhbm":110106,
+			"hjdwdz":hjdwdzFD||"",
+			"hjrxm":hjrxmFD,
+			"hjrybm":hjrybmFD,
+			"lxdh":lxdhFD||"",
+			"lxyx":lxyxFD||"",
+			"txdz":txdzFD||""
+		};
+		console.log("单位用户增加的参数",formdata);
 		$.ajax({
-			type:"get",
-			url:"assets/hjyySeg-2.html",
-			async:true
-		}).then(function(res){
-			//console.log(res);
-			$('#container').html(res);
-			$.getScript("assets/js/seg-2.js");
+			type:"post",
+			url:"http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd",
+			async:true,
+			dataType:'json',
+			data:formdata,
+//{
+//				sfzjdwxx:0,
+//				sfzjryxx:0,
+//				hjdwxz:"hjdwxzFD",
+//				hjdwbm:"-1",
+//				hjdwmc:"hjdwmcFD",
+//				hjdwdz:"hjdwdzFD"||"",
+//				hjrxm:"hjrxmFD",
+//				lxdh:"lxdhFD"||"",
+//				lxyx:"lxyxFD"||"",
+//				txdz:"txdzFD"||""
+//			},
+			success:function(res){
+				console.log("增加单位用户信息返回结果",res);
+				alert(res.status);
+			},
+			error:function(err){
+				console.log("erro",err);
+			}
 		});
-			
+		
+		
 		
 	});
+	//修改
+	var updateFlag = true;
+	$("#updateBtnHJYY").on('click', function(){
+		updateFlag = !updateFlag;
+		if(updateFlag){
+			$("#hjdwmc").attr("disabled",true);
+			$("#hjdwxz").attr("disabled",true);	
+			$("#hjdwdz").attr("disabled",true);
+			
+			$("#hjrxm").attr("disabled",true);
+			$("#lxdh").attr("disabled",true);	
+			$("#lxyx").attr("disabled",true);
+			$("#txdz").attr("disabled",true);
+			
+		}
+		
+		
+		
+	});
+	
+	
 	
 	
 	

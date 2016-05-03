@@ -88,6 +88,7 @@ $(function(){
 			
 			//数据填报，验证，和数据库提交
 			
+			
 		}else if(parseInt(flag) == 3){
 			
 			//页面渲染
