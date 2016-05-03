@@ -1,0 +1,186 @@
+<div class="seg-visible" style="width: 100%;height: 100%;">
+	<div class="tipTab">
+		<div>汇交预约</div>
+	</div>
+	<div class="contentPane">
+		<div class="queryFM">
+			<div class="queryFilter">
+				<img src="img/hjyy-query.png" />&nbsp;&nbsp;
+				<span>汇交县</span>
+			</div>
+			<div class="districtFilter row">
+				
+			<div class="col-sm-3">
+				<div class="input-group districtFilterDiv">			
+					<span class="input-group-addon">省：</span>
+                    <input type="text" class="form-control form-horizontal" id="shengIpt" autocomplete="off">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="">
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="shengDropdownMenu" class="dropdown-menu dropdown-menu-right dis-dropdwown" role="menu"></ul>
+                    </div>
+                    <!-- /btn-group -->
+                </div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="input-group districtFilterDiv">			
+					<span class="input-group-addon">市：</span>
+                    <input type="text" class="form-control form-horizontal" id="shiIpt" autocomplete="off">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="">
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="shiDropdownMenu" class="dropdown-menu dropdown-menu-right" role="menu"></ul>
+                    </div>
+                    <!-- /btn-group -->
+                </div>
+			</div>
+			
+			<div class="col-sm-3">
+				<div class="input-group districtFilterDiv">		
+					<span class="input-group-addon">县：</span>
+                    <input type="text" class="form-control form-horizontal" id="xianIpt" autocomplete="off">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="">
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="xianDropdownMenu" class="dropdown-menu dropdown-menu-right" role="menu">
+                        	
+                        </ul>
+                    </div>
+                    <!-- /btn-group -->
+                </div>
+			</div>
+			
+			<div class="col-sm-3">
+				<button type="button" class="btn btn-success btn-success-outline" id="resetDistrict">重置</button>
+				
+			</div>
+									
+				
+			</div>
+		</div>
+		<div class="contentFM">
+			<div class="countySpan">
+				<span id="countySpan">河北省廊坊市香河县</span>
+				<div style="position:absolute;right: 10%;margin: auto;">
+					<button id="updateBtnHJYY" class="btn btn-success btn-success-outline" style="margin-left: 15px;">修   改</button>
+					<button id="saveBtnHJYY" class="btn btn-success btn-success-outline" style="margin-left: 15px;">保   存</button>
+				</div>
+				
+			</div>
+			<form id="hjryxx" class="form-horizontal"  role="form">
+				<div class="formLeftPane">
+					
+					<div class="form-group">
+					    <label for="hjdwmc" class="control-label">汇交单位名称</label>							    
+					    <div class="input-group">
+		                    
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">汇交单位性质</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="hjdwxz" id="hjdwxz" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">汇交单位地址</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="hjdwdz" id="hjdwdz" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					
+				</div>
+				<div class="formRightPane">
+					
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">汇交人姓名</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="hjrxm" id="hjrxm" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">联系电话</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="lxdh" id="lxdh" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">联系邮箱</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="lxyx" id="lxyx" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="hjdwxz" class="control-label">通信地址</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="txdz" id="txdz" class="form-control">
+		                    <div class="input-group-btn">
+		                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        			<span class="caret"></span>
+                   			 </button>
+                    		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+                    			 <li><a href="#">jmeter</a></li>							               
+                    		</ul>
+		                    </div>
+		                </div>							    
+					</div>
+					
+				</div>
+				<div style="clear: both;"></div>
+				
+					<!--<input type="button" id="reset" value="重置" />
+					<input type="submit" id="submit_yy1" value="下一步"  />-->
+	
+			</form>
+			<!--<div class="operPane">
+				<button id="resetUser" class="btn btn-success btn-success-outline" style="padding-left: 15px;">重  置</button>
+				<button id="submitUser" class="btn btn-success btn-success-outline" style="padding-left: 15px;">下一步</button>
+			</div>-->
+			
+		</div>
+	</div>
+</div>
