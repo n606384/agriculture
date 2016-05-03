@@ -17,18 +17,8 @@ $(function(){
 	}
 	window.onresize = resize();
 	
-	var pro1 = $.ajax({
-		type:"get",
-		url:"assets/hjyySeg-1.html",
-		async:true,
-		success:function(res){
-			$('#container').empty();
-			$('#container').html(res);
-			//$.getScript('assets/js/seg-1.js');
-			$.getScript('js/subscribe427.js');
-			
-		}
-	});
+	$('#container').empty();
+	
 	$("#btnLeft").on('click', function(){
 		if(app.hjyyProgress<2) return;
 		var flag = app.hjyyProgress-=1;
@@ -36,6 +26,18 @@ $(function(){
 		if(app.hjyyProgress < 5){
 			$('#btnRight').html("下一步");
 		}
+		
+		//状态颜色改变
+		$("div.statusPane>div").attr("class","statusCircleDeactive");				
+		$("div.statusPane>div>div").attr("class","statusCircleSMDeactive");
+		
+		$("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div").attr("class","statusCircleActive");
+		$("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div>div").attr("class","statusCircleSMActive");
+		
+		//页面显示内容改变
+		$("#container>div").attr('class','seg-invisible');
+		$("#container>div:eq("+parseInt(flag-1)+")").attr('class','seg-visible');
+		
 		if(flag == 0){
 //			$('#btnLeft').html("重 置");
 			$("#hjdwxz").val("");		
@@ -48,24 +50,11 @@ $(function(){
 		}
 		else if(flag == 1){
 			$('#btnLeft').html("重 置");
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-			});
+			$("#shengDropdownMenu").empty();
+			$("#shiDropdownMenu").empty();
+			$("#xianDropdownMenu").empty();
 			
-		} else {
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-			});
+			
 		}
 	});
 	$("#btnRight").on("click", function(){
@@ -80,77 +69,33 @@ $(function(){
 		
 		var $liCircle = $("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div").attr("class","statusCircleActive");
 		var $liCircle = $("ul.statusMenu li:lt("+parseInt(flag)+")>div[class= statusPane]> div>div").attr("class","statusCircleSMActive");
+		//页面显示内容改变
+		$("#container>div").attr('class','seg-invisible');
+		$("#container>div:eq("+parseInt(flag-1)+")").attr('class','seg-visible');
+//		console.log("$dd", $("#container>div"));
+//		console.log("$div",$("#container>div:eq("+parseInt(flag-1)+")"));
 		
 		
-		
-		if(parseInt(flag) == 2){
-			
+		if(parseInt(flag) == 2){			
 			//y页面填充
-			$('#btnLeft').html("上一步");
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-				$.getScript("js/subscribe427.js");
-			});
-			
-//			var $liCircle1 = $("ul.statusMenu li:eq("+parseInt(flag-1)+") div")[1];
-//			var $liCircle2 = $("ul.statusMenu li:eq("+parseInt(flag-1)+") div")[2];
-//			$liCircle1.attr("class","statusCircleActive");
-//			$liCircle2.attr("class","statusCircleSMActive");
-			
-			
+			$('#btnLeft').html("上一步");		
 			
 			//数据填报，验证，和数据库提交
 			
 		}else if(parseInt(flag) == 3){
-			//页面填充
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-				
-				$.getScript("assets/js/seg-3.js");
-				
-			});
+			
 			//页面渲染
 			
 			//数据填报，验证，和数据库提交
 			
-		}else if(parseInt(flag) == 4){
-			//页面填充
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-				
-			});
+		}else if(parseInt(flag) == 4){			
 			//页面渲染
 			
 			//数据填报，验证，和数据库提交
 			
 		}else if(parseInt(flag) == 5){
-			//页面填充
-			$('#btnRight').html("完 成");
-			$.ajax({
-				type:"get",
-				url:"assets/hjyySeg-"+flag+".html",
-				async:true
-			}).then(function(res){
-				$("#container").empty();
-				$("#container").html(res);
-			});
-			
-			//app.hjyyProgress = 1;
+			//页面渲染
+			$('#btnRight').html("完成");
 			//数据填报，验证，和数据库提交
 			
 			return;
@@ -162,6 +107,24 @@ $(function(){
 		
 		
 	});
+	var i = 1;
+	initContainer(i);
+	function initContainer(i){		
+		console.log("i",i);
+		if(i >5) return;
+		
+		$.ajax({
+			type:"get",
+			url:"assets/hjyySeg-"+i+".html",
+			async:false
+		}).then(function(res){				
+			$('#container').append(res);
+			$.getScript("assets/js/seg-"+parseInt(i)+".js");
+			i++;
+			initContainer(i);
+		});
+		
+	}
 	
 	
 });
