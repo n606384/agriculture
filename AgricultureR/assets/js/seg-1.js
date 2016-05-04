@@ -93,7 +93,9 @@ $(function(){
 					        data: shengAttr
 					        
 						}).on('onSetSelectValue', function(e,keyword,data){
-							console.log('onSetSelectValue: ', keyword, data);
+							console.log('onSetSelectValue: ', keyword, data);						
+							app.xianName = "";
+							app.xianName = keyword.key;
 							var selValue = keyword.id;
 							shengCode = keyword.id;				
 							shiSuggest.bsSuggest('destroy');
@@ -128,6 +130,7 @@ $(function(){
 						        data: shiAttr
 							}).on('onSetSelectValue', function(e,keyword,data){
 								console.log('xianAttr onSetSelectValue: ', keyword, data);
+								app.xianName += keyword.key;
 								var selValue = keyword.id;
 								xianSuggest.bsSuggest('destroy');
 								
@@ -158,10 +161,11 @@ $(function(){
 							        indexKey: 2, //data.value 的第几个数据，作为input输入框的内容
 							        data: xianAttr
 								}).on('onSetSelectValue', function(e,keyword,data){
+									app.xianName += keyword.key;
 									app.xianbm = keyword.id;
 									//console.log("app.xianbm",app);
 									fullfillDropMenu();
-									
+									$("#countySpan").html(app.xianName);
 									
 								});
 									
@@ -194,7 +198,7 @@ $(function(){
 	
 	//行政区输入框置空
 	$("#resetDistrict").on('click', function(){
-		
+		$("#countySpan").html("***省***市***县");
 		$("#shengIpt").val("");
 		$("#shiIpt").val("");
 		//$("#shiDropdownMenu").empty();
@@ -203,7 +207,7 @@ $(function(){
 	});
 	//保存
 	$("#saveBtnHJYY").on('click',function(){
-						
+		
 		var formdata={};
 		var addOrg = 0;
 		var addUser = 0;
@@ -225,6 +229,19 @@ $(function(){
 		var	lxyxFD = $("#lxyx").val();
 		var	txdzFD = $("#txdz").val();
 		
+		/********判断信息是否有空***********/
+		if(hjdwxzFD==""||hjdwdzFD==""||hjdwmcFD==""||hjrxmFD==""||lxdhFD==""||lxyxFD==""||txdzFD==""){
+			var title="警告信息";
+			var content="录入信息不完整，请补全其他信息！";
+			var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";
+			
+			$("#modalTitle").html(title);
+			$("#modalContent").html(content);
+			$("#modalFooter").html(footer);
+			
+			$("#dialogModal").modal('show');
+			return;
+		}
 		
 		/***判断增加和修改的状态****/
 		if(userTree){
@@ -256,8 +273,7 @@ $(function(){
 				}
 			}
 		}
-		alert("addOrg:"+addOrg+"\t;addUser:"+addUser);
-		alert("xzqhbm:"+app.xianbm);
+		
 		formdata = {
 			"sfzjdwxx":addOrg,
 			"sfzjryxx":addUser,
@@ -272,6 +288,8 @@ $(function(){
 			"lxyx":lxyxFD||"",
 			"txdz":txdzFD||""
 		};
+		
+		
 		console.log("单位用户增加的参数",formdata);
 		var sUrl="http://192.168.44.231:8080/rest/hjyy/addhjyyyh?token=ddd";
 		var pUrl = "http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd";
@@ -283,22 +301,20 @@ $(function(){
 			async:true,
 			dataType:'json',
 			data:formdata,
-//{
-//				sfzjdwxx:0,
-//				sfzjryxx:0,
-//				hjdwxz:"hjdwxzFD",
-//				hjdwbm:"-1",
-//				hjdwmc:"hjdwmcFD",
-//				hjdwdz:"hjdwdzFD"||"",
-//				hjrxm:"hjrxmFD",
-//				lxdh:"lxdhFD"||"",
-//				lxyx:"lxyxFD"||"",
-//				txdz:"txdzFD"||""
-//			},
 			success:function(res){
 				console.log("增加单位用户信息返回结果",res);
-				alert(res.status);
+				
 				fullfillDropMenu();
+				
+				$("#hjdwmc").attr("disabled","disabled");
+				$("#hjdwxz").attr("disabled","disabled");	
+				$("#hjdwdz").attr("disabled","disabled");
+				
+				$("#hjrxm").attr("disabled","disabled");
+				$("#lxdh").attr("disabled","disabled");	
+				$("#lxyx").attr("disabled","disabled");
+				$("#txdz").attr("disabled","disabled");
+				
 			},
 			error:function(err){
 				console.log("erro",err);
@@ -309,23 +325,18 @@ $(function(){
 		
 	});
 	//修改
-	var updateFlag = true;
+	var update = false;
 	$("#updateBtnHJYY").on('click', function(){
-		updateFlag = !updateFlag;
-		if(updateFlag){
-			$("#hjdwmc").attr("disabled",true);
-			$("#hjdwxz").attr("disabled",true);	
-			$("#hjdwdz").attr("disabled",true);
-			
-			$("#hjrxm").attr("disabled",true);
-			$("#lxdh").attr("disabled",true);	
-			$("#lxyx").attr("disabled",true);
-			$("#txdz").attr("disabled",true);
-			
-		}
+		update = true;
+		$("#hjdwmc").removeAttr("disabled");
+		$("#hjdwxz").removeAttr("disabled");	
+		$("#hjdwdz").removeAttr("disabled");
 		
-		
-		
+		$("#hjrxm").removeAttr("disabled");
+		$("#lxdh").removeAttr("disabled");	
+		$("#lxyx").removeAttr("disabled");
+		$("#txdz").removeAttr("disabled");
+				
 	});
 	//填充下拉列表
 	function fullfillDropMenu(){
