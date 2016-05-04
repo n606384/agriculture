@@ -1,6 +1,7 @@
 $(function(){
 	var shengAttr = {value:[]},shiAttr={value:[]},xianAttr={value:[]};
 	var shiFlag = true, xianFlag = true;
+	
 	var shengCode,shiCode;
 	var province,city,county;
 	var userTree;
@@ -229,6 +230,7 @@ $(function(){
 		var	lxyxFD = $("#lxyx").val();
 		var	txdzFD = $("#txdz").val();
 		
+		
 		/********判断信息是否有空***********/
 		if(hjdwxzFD==""||hjdwdzFD==""||hjdwmcFD==""||hjrxmFD==""||lxdhFD==""||lxyxFD==""||txdzFD==""){
 			var title="警告信息";
@@ -255,23 +257,27 @@ $(function(){
 					break;
 				}
 				else{
-					addOrg = 0;
-					addUser = 0;
+					addOrg = 0;					
 					hjdwbmFD = -1;
 				}
+				
+			}
+			for(var i =0; i<userTree.length;i++)
 				for(var j = 0; j<userTree[i].hjdwry.length;j++){
+					
 					var person = userTree[i].hjdwry[j];
-					if(hjrxmFD.trim() == person.hjrxm){
+					
+					console.log("person.hjrxm.trim()",person.hjrxm.trim());
+					
+					if(hjrxmFD.trim() == person.hjrxm.trim()){
 						addUser = 1;
+						app.hjrybm = person.hjrybm;
 						hjrybmFD = person.hjrybm;
-					}else if(hjrxmFD.trim() == ""){
-						return;
-					} else {
-						addUser = 0;
+						
+						break;
 					}
 					
 				}
-			}
 		}
 		
 		formdata = {
@@ -303,7 +309,7 @@ $(function(){
 			data:formdata,
 			success:function(res){
 				console.log("增加单位用户信息返回结果",res);
-				
+				if(res.hjrybm)app.hjrybm = res.hjdwbm;
 				fullfillDropMenu();
 				
 				$("#hjdwmc").attr("disabled","disabled");
@@ -318,6 +324,16 @@ $(function(){
 			},
 			error:function(err){
 				console.log("erro",err);
+				var title="服务器错误信息";
+				var content="服务器返回错误信息！";
+				var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";
+				
+				$("#modalTitle").html(title);
+				$("#modalContent").html(content);
+				$("#modalFooter").html(footer);
+				
+				$("#dialogModal").modal('show');
+				return;
 			}
 		});
 		

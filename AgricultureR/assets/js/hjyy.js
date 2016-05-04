@@ -1,14 +1,6 @@
 var app = window.app ={};
 app.hjyyProgress = 1;
-app.hjdwxzList=[
-	{
-		"bm":1003001,
-		"name":"农业系统单位"
-	},{
-		"bm":1003002,
-		"name":"开发商"
-	}
-]
+
 $(function(){
 	
 	function resize(){
@@ -89,6 +81,7 @@ $(function(){
 			$('#btnLeft').html("上一步");		
 			
 			//数据填报，验证，和数据库提交
+			var a = new $.processSJB(app);
 			
 			
 		}else if(parseInt(flag) == 3){
