@@ -200,7 +200,7 @@ $(function(){
 													
 												}else if(parseInt(data.hjdwxz)==1003001){
 													$('#hjdwxz').val("开发商");
-												}																																	
+												}																										
 												
 												if(res[0].hjdwry.length > 0){
 													
@@ -423,6 +423,7 @@ $(function(){
 				}
 			}
 		}
+		alert("addOrg:"+addOrg+"\t;addUser:"+addUser);
 		
 		formdata = {
 			"sfzjdwxx":addOrg,
@@ -441,6 +442,8 @@ $(function(){
 		console.log("单位用户增加的参数",formdata);
 		$.ajax({
 			type:"post",
+			//http://192.168.44.231:8080/rest/hjyy/addhjyyyh?token=ddd
+			//http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd
 			url:"http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd",
 			async:true,
 			dataType:'json',
