@@ -53,6 +53,8 @@ $(function(){
 			$("#lxdh").val("");
 			$("#lxyx").val("");
 			$("#txdz").val("");
+			$("ul.statusMenu li:eq(0)>div[class= statusPane]> div").attr("class","statusCircleActive");
+			$("ul.statusMenu li:eq(0)>div[class= statusPane]> div>div").attr("class","statusCircleSMActive");
 		}
 		else if(flag == 1){
 			$('#btnLeft').html("重 置");
