@@ -160,179 +160,8 @@ $(function(){
 								}).on('onSetSelectValue', function(e,keyword,data){
 									app.xianbm = keyword.id;
 									//console.log("app.xianbm",app);
+									fullfillDropMenu();
 									
-									$.ajax({
-										type:"post",
-										url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX",
-										async:true,
-										data:{
-											"ssqx":app.xianbm
-										},
-										dataType:"json",
-										success:function(res){
-											console.log(res);
-											userTree = res;
-											if(res.length>0){
-												
-//												$("#hjdwmcList").empty();
-//												$("#hjdwdzList").empty();
-//												$("#hjrxmList").empty();
-//												$("#lxdhList").empty();
-//												$("#lxyxList").empty();
-//												$("#txdzList").empty();
-//												
-												var mcStr = "",dzStr = "";
-												for(var i = 0; i<res.length;i++){
-													var dataset = res[i];
-													
-													 mcStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwmc+"'>"+dataset.hjdwmc+"</li>";
-													 dzStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwdz+"'>"+dataset.hjdwdz+"</li>";
-																										
-												}
-												$("#hjdwmcList").html(mcStr);
-												$("#hjdwdzList").html(dzStr);
-												
-												var data = res[0];
-												$("#hjdwmc").val(data.hjdwmc);
-												$('#hjdwdz').val(data.hjdwdz);
-												if(parseInt(data.hjdwxz)==1003001){
-													$('#hjdwxz').val("农业系统单位");
-													
-												}else if(parseInt(data.hjdwxz)==1003001){
-													$('#hjdwxz').val("开发商");
-												}																									
-												
-												if(res[0].hjdwry.length > 0){
-													
-													//填充用户信息下拉列表
-													var xmStr="",dhStr="", yxStr="", dzStr="";
-													for(var i = 0;i<res[0].hjdwry.length;i++){
-														var dataset = res[0].hjdwry[i];
-														
-														 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
-														 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
-														  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
-														   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
-														
-													}
-													
-													$("#hjrxmList").html(xmStr);
-													$("#lxdhList").html(dhStr);
-													$("#lxyxList").html(yxStr);
-													$("#txdzList").html(dzStr);
-													
-													
-													
-													//初始化用户信息
-													var person = res[0].hjdwry[0];
-													//console.log("person",person);
-													$("#hjrxm").val(person.hjrxm);
-													$('#lxdh').val(person.lxdh);
-													$('#lxyx').val(person.lxyx);
-													$('#txdz').val(person.txdz);
-												}
-												
-												$("#hjdwmcList li").on('click', function(e){
-													console.log("汇交单位名称",e);
-													var dataset = e.target.dataset;
-													var id = dataset.id;
-													var name = dataset.name;
-													console.log("userTree",userTree);
-													for(var i = 0;i<userTree.length;i++){
-														if(name.trim() == userTree[i].hjdwmc){
-															var data = res[i];
-															$("#hjdwmc").val(data.hjdwmc);
-															$('#hjdwdz').val(data.hjdwdz);
-															if(parseInt(data.hjdwxz)==1003001){
-																$('#hjdwxz').val("农业系统单位");
-																
-															}else if(parseInt(data.hjdwxz)==1003001){
-																$('#hjdwxz').val("开发商");
-															}
-															//更新初始化用户信息
-															var person = userTree[i].hjdwry[0];
-															//console.log("person",person);
-															$("#hjrxm").val(person.hjrxm);
-															$('#lxdh').val(person.lxdh);
-															$('#lxyx').val(person.lxyx);
-															$('#txdz').val(person.txdz);
-															//填充用户信息下拉列表
-															var xmStr="",dhStr="", yxStr="", dzStr="";
-															for(var j = 0;j<userTree[i].hjdwry.length;j++){
-																var dataset = userTree[i].hjdwry[j];
-																
-																 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
-																 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
-																  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
-																   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
-																
-															}
-															
-															$("#hjrxmList").html(xmStr);
-															$("#lxdhList").html(dhStr);
-															$("#lxyxList").html(yxStr);
-															$("#txdzList").html(dzStr);
-															
-														}
-													}
-													
-												});
-										
-												$("#hjrxmList li").on('click', function(e){
-													
-													console.log("汇交人员名称",e);
-													var dataset = e.target.dataset;
-													var id = dataset.id;
-													var name = dataset.name;
-													
-													for(var i = 0;i<userTree.length;i++)
-														for(var j = 0;j<userTree[i].hjdwry.length;j++){
-															var person = userTree[i].hjdwry[j];
-															if(name.trim() == person.hjrxm){
-																$("#hjrxm").val(person.hjrxm);
-																$('#lxdh').val(person.lxdh);
-																$('#lxyx').val(person.lxyx);
-																$('#txdz').val(person.txdz);
-															}
-														
-													}
-											
-												});
-												
-												$("#hjdwdzList li").on('click', function(e){
-													//console.log("汇交单位性质",$(this)[0].dataset);
-													
-													$("#hjdwdz").val($(this)[0].dataset.name);
-															
-												});
-												
-												$("#lxyxList li").on('click', function(e){
-													//console.log("汇交单位性质",$(this)[0].dataset);
-													
-													$("#lxyx").val($(this)[0].dataset.name);
-															
-												});
-												$("#txdzList li").on('click', function(e){
-													//console.log("汇交单位性质",$(this)[0].dataset);
-													
-													$("#txdz").val($(this)[0].dataset.name);
-															
-												});
-												$("#lxdhList li").on('click', function(e){
-													//console.log("汇交单位性质",$(this)[0].dataset);
-													
-													$("#lxdh").val($(this)[0].dataset.name);
-															
-												});
-												
-											}
-											
-											
-										},
-										error:function(err){
-											console.log("出错了",err);
-										}
-									});
 									
 								});
 									
@@ -396,15 +225,19 @@ $(function(){
 		var	lxyxFD = $("#lxyx").val();
 		var	txdzFD = $("#txdz").val();
 		
+		
 		/***判断增加和修改的状态****/
 		if(userTree){
+			console.log("userTree", userTree,hjdwmcFD);
 			for(var i=0;i<userTree.length;i++){
-				if(hjdwmcFD.trim() == userTree[i].hjdwmc){
+				if(hjdwmcFD.trim() =="")
+					return;
+				else if(hjdwmcFD.trim() == userTree[i].hjdwmc.trim()){
 					addOrg = 1;
 					hjdwbmFD = userTree[i].hjdwbm;
-				}else if(hjdwmcFD.trim() ==""){
-					return;
-				} else{
+					break;
+				}
+				else{
 					addOrg = 0;
 					addUser = 0;
 					hjdwbmFD = -1;
@@ -424,14 +257,14 @@ $(function(){
 			}
 		}
 		alert("addOrg:"+addOrg+"\t;addUser:"+addUser);
-		
+		alert("xzqhbm:"+app.xianbm);
 		formdata = {
 			"sfzjdwxx":addOrg,
 			"sfzjryxx":addUser,
 			"hjdwxz":hjdwxzFD,
 			"hjdwbm":hjdwbmFD,
 			"hjdwmc":hjdwmcFD,
-			"xzqhbm":110106,
+			"xzqhbm":app.xianbm,
 			"hjdwdz":hjdwdzFD||"",
 			"hjrxm":hjrxmFD,
 			"hjrybm":hjrybmFD,
@@ -440,11 +273,13 @@ $(function(){
 			"txdz":txdzFD||""
 		};
 		console.log("单位用户增加的参数",formdata);
+		var sUrl="http://192.168.44.231:8080/rest/hjyy/addhjyyyh?token=ddd";
+		var pUrl = "http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd";
 		$.ajax({
 			type:"post",
 			//http://192.168.44.231:8080/rest/hjyy/addhjyyyh?token=ddd
 			//http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd
-			url:"http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd",
+			url:sUrl,
 			async:true,
 			dataType:'json',
 			data:formdata,
@@ -463,6 +298,7 @@ $(function(){
 			success:function(res){
 				console.log("增加单位用户信息返回结果",res);
 				alert(res.status);
+				fullfillDropMenu();
 			},
 			error:function(err){
 				console.log("erro",err);
@@ -491,6 +327,189 @@ $(function(){
 		
 		
 	});
+	//填充下拉列表
+	function fullfillDropMenu(){
+		$.ajax({
+			type:"post",
+			url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX",
+			async:true,
+			data:{
+				"ssqx":app.xianbm
+			},
+			dataType:"json",
+			success:function(res){
+				console.log(res);
+				userTree = res;
+				if(res.length>0){
+					
+					$("#hjdwmc").val("");
+					$('#hjdwdz').val("");
+					$("#hjdwxz").val("");
+					$("#hjrxm").val("");
+					$('#lxdh').val("");
+					$('#lxyx').val("");
+					$('#txdz').val("");
+					
+					$("#hjdwmcList").empty();
+					$("#hjdwdzList").empty();
+					$("#hjrxmList").empty();
+					$("#lxdhList").empty();
+					$("#lxyxList").empty();
+					$("#txdzList").empty();
+					
+//												
+					var mcStr = "",dzStr = "";
+					for(var i = 0; i<res.length;i++){
+						var dataset = res[i];
+						
+						 mcStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwmc+"'>"+dataset.hjdwmc+"</li>";
+						 dzStr += "<li data-id='"+i+"' data-name='"+dataset.hjdwdz+"'>"+dataset.hjdwdz+"</li>";
+																			
+					}
+					$("#hjdwmcList").html(mcStr);
+					$("#hjdwdzList").html(dzStr);
+					
+					var data = res[0];
+					$("#hjdwmc").val(data.hjdwmc);
+					$('#hjdwdz').val(data.hjdwdz);
+					if(parseInt(data.hjdwxz)==1003001){
+						$('#hjdwxz').val("农业系统单位");
+						
+					}else if(parseInt(data.hjdwxz)==1003001){
+						$('#hjdwxz').val("开发商");
+					}																									
+					
+					if(res[0].hjdwry.length > 0){
+						
+						//填充用户信息下拉列表
+						var xmStr="",dhStr="", yxStr="", dzStr="";
+						for(var i = 0;i<res[0].hjdwry.length;i++){
+							var dataset = res[0].hjdwry[i];
+							
+							 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
+							 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
+							  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
+							   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
+							
+						}
+						
+						$("#hjrxmList").html(xmStr);
+						$("#lxdhList").html(dhStr);
+						$("#lxyxList").html(yxStr);
+						$("#txdzList").html(dzStr);
+												
+						
+						//初始化用户信息
+						var person = res[0].hjdwry[0];
+						//console.log("person",person);
+						$("#hjrxm").val(person.hjrxm);
+						$('#lxdh').val(person.lxdh);
+						$('#lxyx').val(person.lxyx);
+						$('#txdz').val(person.txdz);
+					}
+					
+					$("#hjdwmcList li").on('click', function(e){
+						console.log("汇交单位名称",e);
+						var dataset = e.target.dataset;
+						var id = dataset.id;
+						var name = dataset.name;
+						console.log("userTree",userTree);
+						for(var i = 0;i<userTree.length;i++){
+							if(name.trim() == userTree[i].hjdwmc){
+								var data = res[i];
+								$("#hjdwmc").val(data.hjdwmc);
+								$('#hjdwdz').val(data.hjdwdz);
+								if(parseInt(data.hjdwxz)==1003001){
+									$('#hjdwxz').val("农业系统单位");
+									
+								}else if(parseInt(data.hjdwxz)==1003001){
+									$('#hjdwxz').val("开发商");
+								}
+								//更新初始化用户信息
+								var person = userTree[i].hjdwry[0];
+								//console.log("person",person);
+								$("#hjrxm").val(person.hjrxm);
+								$('#lxdh').val(person.lxdh);
+								$('#lxyx').val(person.lxyx);
+								$('#txdz').val(person.txdz);
+								//填充用户信息下拉列表
+								var xmStr="",dhStr="", yxStr="", dzStr="";
+								for(var j = 0;j<userTree[i].hjdwry.length;j++){
+									var dataset = userTree[i].hjdwry[j];
+									
+									 xmStr += "<li data-id='"+i+"' data-name='"+dataset.hjrxm+"'>"+dataset.hjrxm+"</li>";
+									 dhStr += "<li data-id='"+i+"' data-name='"+dataset.lxdh+"'>"+dataset.lxdh+"</li>";
+									  yxStr += "<li data-id='"+i+"' data-name='"+dataset.lxyx+"'>"+dataset.lxyx+"</li>";
+									   dzStr += "<li data-id='"+i+"' data-name='"+dataset.txdz+"'>"+dataset.txdz+"</li>";
+									
+								}
+								
+								$("#hjrxmList").html(xmStr);
+								$("#lxdhList").html(dhStr);
+								$("#lxyxList").html(yxStr);
+								$("#txdzList").html(dzStr);
+								
+							}
+						}
+						
+					});
+			
+					$("#hjrxmList li").on('click', function(e){
+						
+						console.log("汇交人员名称",e);
+						var dataset = e.target.dataset;
+						var id = dataset.id;
+						var name = dataset.name;
+						
+						for(var i = 0;i<userTree.length;i++)
+							for(var j = 0;j<userTree[i].hjdwry.length;j++){
+								var person = userTree[i].hjdwry[j];
+								if(name.trim() == person.hjrxm){
+									$("#hjrxm").val(person.hjrxm);
+									$('#lxdh').val(person.lxdh);
+									$('#lxyx').val(person.lxyx);
+									$('#txdz').val(person.txdz);
+								}
+							
+						}
+				
+					});
+					
+					$("#hjdwdzList li").on('click', function(e){
+						//console.log("汇交单位性质",$(this)[0].dataset);
+						
+						$("#hjdwdz").val($(this)[0].dataset.name);
+								
+					});
+					
+					$("#lxyxList li").on('click', function(e){
+						//console.log("汇交单位性质",$(this)[0].dataset);
+						
+						$("#lxyx").val($(this)[0].dataset.name);
+								
+					});
+					$("#txdzList li").on('click', function(e){
+						//console.log("汇交单位性质",$(this)[0].dataset);
+						
+						$("#txdz").val($(this)[0].dataset.name);
+								
+					});
+					$("#lxdhList li").on('click', function(e){
+						//console.log("汇交单位性质",$(this)[0].dataset);
+						
+						$("#lxdh").val($(this)[0].dataset.name);
+								
+					});
+					
+				}
+				
+				
+			},
+			error:function(err){
+				console.log("出错了",err);
+			}
+		});
+	}
 	
 	
 	
