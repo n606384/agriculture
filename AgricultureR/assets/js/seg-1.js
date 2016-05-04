@@ -200,7 +200,7 @@ $(function(){
 													
 												}else if(parseInt(data.hjdwxz)==1003001){
 													$('#hjdwxz').val("开发商");
-												}																										
+												}																									
 												
 												if(res[0].hjdwry.length > 0){
 													
