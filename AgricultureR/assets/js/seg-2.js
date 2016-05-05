@@ -8,7 +8,7 @@
 		
 	}
 	var formData= {};
-	var sjbztFD = "1008001";
+	var sjbztFD = "1008002";
 	function init(){
 		$("#countySpanSJB").html(app.xianName);
 		//事件绑定
@@ -32,7 +32,7 @@
 				return;
 				
 			}else{			
-				console.log("formData", formData);
+				console.log("提交数据包formData", formData);
 				
 //				formData = {
 //					"sjblx" : "1007001",
@@ -178,7 +178,7 @@
 		
 		var sjbztFlag = $('input[name="sjbsc"]:checked').val();
 		if(parseInt(sjbztFlag) == 0){
-			sjbztFD = "1008001";
+			sjbztFD = "1008002";
 			
 		}else if(parseInt(sjbztFlag) == 1){
 			sjbztFD = "1008005";
