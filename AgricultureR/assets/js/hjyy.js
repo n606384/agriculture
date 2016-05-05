@@ -60,7 +60,7 @@ $(function(){
 	$("#btnRight").on("click", function(){
 		if(app.hjyyProgress >4) return;
 		var flag = app.hjyyProgress+=1;
-		console.log("btnRight clicked and its flag, app.hjyyProcess",flag,app.hjyyProgress);
+		//console.log("btnRight clicked and its flag, app.hjyyProcess",flag,app.hjyyProgress);
 		
 		//状态颜色改变
 		$("ui.statusMenu li>div[class=statusPane]>div").attr("class","statusCircleDeactive");
@@ -89,6 +89,7 @@ $(function(){
 			//页面渲染
 			
 			//数据填报，验证，和数据库提交
+			var a = new $.processSJWJ(app);
 			
 		}else if(parseInt(flag) == 4){			
 			//页面渲染

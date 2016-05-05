@@ -259,6 +259,7 @@ form ul li:hover{
 	height: calc(100% - 50px);
 	height: -webkit-calc(100% - 50px);
 	height: -moz-calc(100% - 50px);
+	background-color: #F8F8F8;
 	
 }
 .queryFM{
@@ -306,6 +307,7 @@ form ul li:hover{
 	height: -webkit-calc(100% - 50px);
 	height: -moz-calc(100% - 50px);
 	background-color: #F8F8F8;
+	
 }
 .queryFilter{
 	float: left;
@@ -348,6 +350,8 @@ form ul li:hover{
 }
 .contentFM form{
 	margin:30px auto;
+	/*overflow-y: auto;*/
+	
 }
 .formLeftPane{
 	float: left;
@@ -421,11 +425,9 @@ button:hover{
 }
 .seg-visible{
 	display: block;
+	overflow-y: auto;
+	background-color: #F8F8F8;
 }
-
-
-
-
 
 .tree {
     min-height:20px;
@@ -511,7 +513,69 @@ button:hover{
 .sjbchushen{
 	margin: auto;
 }
-
-
-
-
+.sjwjForm{
+	background-color: #FFFFFF;
+}
+.sjwjTable{
+	position: relative;
+	top: 10px;
+	margin: auto;
+	width: 80%;
+	background-color: #FFFFFF;
+}
+.sjwjTable tbody tr:hover{
+	
+	/*#65B889*/
+	background-color:rgba(101,184,137,0.3);
+	
+}
+.sjwjTable th{
+	font-size: 1.3em;;
+}
+.sjwjTable tbody{
+	font-size: 1.0em;;
+}
+.sjwjTable th, .sjwjTable td{
+	text-align: center;
+}
+.sjbDetailPane{
+	/*border: solid 2px red;*/
+	width: 55%;
+	margin: 30px auto;
+	background-color: #FFFFFF;
+	overflow-y: auto;
+}
+.chushenResult{
+	width: 400px;
+	height: 200px;
+	margin: auto;
+	text-align: center;
+	background-color: #FFFFFF;
+	
+}
+.chushenResult ul li{
+	float: left;
+	margin: auto;
+}
+.chushenResult_title{
+	color: #FFFFFF;
+	height: 40px;
+	background-color: #229A56;
+	width: 100%;
+	vertical-align: middle;
+	line-height: 40px;
+}
+.chushenResult_content{
+	height: 160px;
+	width: 100%;
+	vertical-align: middle;
+	line-height: 160px;
+}
+.chushenResult_content ul{
+	margin: 0px auto;
+	list-style: none;
+}
+..chushenResult_content ul li{
+	float: left;
+	text-align: center;
+}

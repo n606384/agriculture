@@ -56,7 +56,7 @@
 					dataType:'json',
 					data:formData,
 					success:function(res){
-						console.log(res);
+						console.log("数据包保存返回信息",res);
 						if(res){
 							app.sjbbm = res.sjbbm;
 							disableInput();
@@ -183,9 +183,7 @@
 		}else if(parseInt(sjbztFlag) == 1){
 			sjbztFD = "1008005";
 		}
-		
-		console.log("sjbsc radio",$('input[name="sjbsc"]:checked').val());
-		
+						
 		
 		formData = {
 			"sjblx" : sjblxFD,
