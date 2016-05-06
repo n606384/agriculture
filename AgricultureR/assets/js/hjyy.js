@@ -1,5 +1,5 @@
-var app = window.app ={};
-app.hjyyProgress = 1;
+//var app = window.app ={};
+//app.hjyyProgress = 1;
 
 $(function(){
 	
