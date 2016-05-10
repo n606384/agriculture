@@ -7,7 +7,7 @@ $(function(){
 		var mm = $('#passport').val();
 		$.ajax({
 			type:"post",
-			url:"http://192.168.44.231:8080/rest/login",
+			url:"http://192.168.44.232:8080/rest/login",
 			async:true,
 			data:$('#login').serialize(),
 			dataType:"json",
@@ -18,10 +18,10 @@ $(function(){
 					app.serId = res.id;
 					console.log(app.token);
 					flag = true;
-					//window.location.href = "GetJson.html?token="+app.token;
+					window.location.href = "hjyy.html?token="+app.token;
 					$.ajax({
 						type:"post",
-						url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX?token="+app.token,
+						url:"http://192.168.44.232:8080/rest/hjyy/getHJDWRYXX?token="+app.token,
 						async:true,
 						data:{
 							"ssqx":110105

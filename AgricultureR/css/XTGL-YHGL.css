@@ -1,0 +1,116 @@
+ul,li,ol{
+	list-style: none;
+}
+.left-tag-div{
+	width: 15%;
+	position: relative;
+}
+.left-tag-div input:hover{
+	color:#0FB3D6;
+}
+.right-container-div{
+	width: 75%;
+	position: relative;
+	left: 18%;
+	top: -140px;
+}
+#YHGL-button{
+	margin: 30px 30px 10px 30px;	
+	width:163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #000000;
+}
+#XTRZ-button{
+	margin:0px 30px 30px 30px;
+	width:163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #000000;
+}
+.juesedaima{
+	width: 100px;
+}
+.right-header-div{
+	top:50px;
+	border-bottom: 1px solid #ededed;
+	height: 30px;
+}
+.right-header-div h2{
+	
+	color:#F1A01B;
+	font-size: 22px;
+	
+}
+.right-header-div ul{
+	position: relative;
+}
+.right-header-div li{
+	float: right;
+	position: relative;
+	top: -25px;
+	width: 80px;
+}
+.table{
+	border-color: #ededed;
+}
+#Addoption input{
+	corlor:#ededed;
+}
+.QRQX-button-div{
+	width: 400px;
+	height: 60px;
+}
+.warning{
+	display: block;
+width: 75%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #AC2925;
+border-radius: 4px;
+}
+#TJ-Form span{
+	position: relative;
+	
+}
+label{
+	font-size: 14px;
+}
+h2{
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: #FFFFFF;
+}
+.cursor{
+	cursor: pointer
+}
+.form-group span{
+	display: inline-block;
+	color: red;
+	position: absolute;
+	float: left;
+	left: 77%;
+}
+.form-group label{
+	display: block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-group input{
+	display: inline-block;
+}
+.form-group select{
+	border-color: #E2E2E2;
+}

@@ -1,0 +1,111 @@
+<div style="width: 100%;height: 100%;">
+	 <div class="left-tag-div" id="left-tag-div">
+	 	<input type="button" id="YHGL-button" class="btn btn-info" value="用户管理" />
+	 	<input type="button" id="XTRZ-button"  class="btn btn-info" value="系统日志" />
+	 </div>
+	 <div class="right-container-div">
+		 <div class="right-header-div">
+		 	<h2>用户管理</h2>
+		 	<ul>
+		    	<li><a class="cursor" data-toggle="modal" data-target="changeModal" id="updateUser" ><img src="img/xiugai.png" /></a></li>
+		 		<li><a class="cursor" data-toggle="modal" data-target="modal-delete" id="delUser"><img src="img/shanchu.png" /></a></li>
+		 		<li class="zengjia-li"><a class="cursor" data-toggle="modal" id="addUser"><img src="img/zengjia.png" /></a></li>
+		 	</ul>
+		 	
+		 </div>
+		 <div id="UserTable-div"></div>
+	</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span><button>
+	        <h2 id="exampleModalLabel">添加用户</h2>
+	      </div>
+	      <div class="modal-body">
+	        <form id="TJ-Form">
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">登录名：</label>
+	            <input type="text" class="form-control" id="username" name="dlm" onfocus="this.value=''" onblur="if(this.value==''){this.value='用户名以英文字母组成'}" required>
+	            <span>*</span>
+	          </div>        
+	          <div class="form-group" id="mmdiv">
+	            <label for="message-text" class="control-label">密码：</label>
+	            <input type="password" class="form-control" id="password" name="mm" required><span>*</span>
+	            
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">姓名：</label>
+	            <input type="text" class="form-control" id="xm" name="xm">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">邮箱：</label>
+	            <input type="text" class="form-control" id="yx" name="yx">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">电话：</label>
+	            <input type="text" class="form-control" id="dh"name="dh">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">备注：</label>
+	            <input type="text" class="form-control" id="bz" name="bz">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">角色代码：</label>
+	            <select class="juesedaima" name="yhjs" id="Adds">
+	                   	<option class="form-control value="系统管理员">系统管理员</option>
+	                   	<option class="form-control value="系统用户" selsected>系统用户</option>
+	            <select>
+	            
+	            <!--input type="text" class="form-control" id="recipient-name"-->
+	          </div>
+	          <div class="form-group" id="Addoption">
+	            <label for="message-text" class="control-label">角色备注：</label>
+	            <input type="text" value="系统用户" onfocus="this.value=''" onblur="if(this.value==''){this.value='系统用户'}" class="form-control" id="jsbz" name="jsbz">
+	             <span>*</span>         
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="guanbi">关闭</button>
+	        <input type="submit" class="btn btn-primary" id="tijiao" value="提交" />
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!--
+		作者：offline
+		时间：2016-04-28
+		描述：删除提示框
+	-->
+	<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="modal-delete">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span><button>
+	        <h2 class="modal-title" id="gridSystemModalLabel">删除信息</h2>
+	      </div>
+	      <div class="modal-body">
+	        <div class="container-fluid">
+	          <div class="row">           
+	            <div class="col-md-4 col-md-offset-4" id="InfoLabel">确定删除该条记录吗？</div>
+	          </div>
+	          
+	         
+	          
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消<button>
+	        <button type="button" class="btn btn-primary" id="queding">确定<button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal --> 
+
+               
+</div>

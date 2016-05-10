@@ -46,6 +46,7 @@ form ul li:hover{
 	text-align: center;
 	
 }
+
 .tipsPane{
 	width: 20%;
 	height: 64px;
@@ -94,7 +95,19 @@ form ul li:hover{
 	border: solid 1px #F1A01B;
 	background-color: #F1A01B;
 	padding: 5px 10px;
-}			
+}
+.navActive{
+	text-decoration:none;
+	border: solid 1px #F1A01B;
+	background-color: #F1A01B;
+	padding: 5px 10px;
+}
+.navDeactive{	
+	color: #FFFFFF;
+	padding: 5px 10px;
+	border-radius:5px;	
+	outline: none;
+}
 
 .tipAuthor{
 	list-style: none;
