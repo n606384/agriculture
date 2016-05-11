@@ -567,9 +567,9 @@ button:hover{
 }
 
 .chushenResult{
-	width: 400px;
-	height: 200px;
-	margin: auto;
+	width: 60%;
+	height: 96%;
+	margin: 25px auto;
 	text-align: center;
 	background-color: #FFFFFF;
 	
@@ -586,17 +586,23 @@ button:hover{
 	vertical-align: middle;
 	line-height: 40px;
 }
+.chushenResult_title h3{
+	vertical-align: middle;
+	line-height: 40px;
+}
+
 .chushenResult_content{
-	height: 160px;
+	height: 100%;
 	width: 100%;
 	vertical-align: middle;
-	line-height: 160px;
+	line-height: 50px;
+	text-align: left;
 }
 .chushenResult_content ul{
 	margin: 0px auto;
 	list-style: none;
 }
-..chushenResult_content ul li{
+.chushenResult_content ul li{
 	float: left;
 	text-align: center;
 }
@@ -608,4 +614,47 @@ button:hover{
     border-color: #ddd;
     border-radius: 4px 4px 0 0;
     box-shadow: none;
+}
+.chushenDl dt{
+	text-align: left;
+	margin-left: 5%;
+}
+
+.chushenDl dd{
+	margin-left: 20px;
+}
+.dl-horizontal{
+	margin-top: 20px;
+	margin-bottom: 0px;
+}
+.dl-horizontal a:hover{
+	cursor: pointer;
+}
+.chushenResult_content label{
+	margin-left: 5%;
+	margin-bottom: 0px;
+}
+.chushenResult_content textarea{
+	width: 90%;
+	margin:0px auto ;
+}
+
+.printDl dt{
+	width:30%;
+	
+}
+.printDl dd{
+	width: 70%;
+}
+
+.printPane{
+	max-width: 80%;
+	min-width: 250mm;
+	min-height: 317mm;
+}
+#printContentPane{
+	margin: 0px auto;
+	border: solid;
+	width: 210mm;
+	height: 297mm;
 }

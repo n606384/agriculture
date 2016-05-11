@@ -136,7 +136,7 @@ $(function(){
 			//页面渲染
 			$('#btnRight').html("完成");
 			//数据填报，验证，和数据库提交
-			
+			var a = new $.chushenProcess(app);
 			return;
 			
 			
