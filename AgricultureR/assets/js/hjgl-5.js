@@ -18,6 +18,8 @@
 		$("#addUser").on('click',addUser);
 		$("#delUser").on('click',delUser);
 		$("#updateUser").on('click',updateUser);
+		$("#YHGL-button").on('click',yhglVisibility);
+		$("#XTRZ-button").on('click',xtrzVisibility);
 		
 	}
 	//增加用户弹出框
@@ -28,11 +30,62 @@
 	}
 	//修改用户弹出框
 	function updateUser(){
+		flag = 1;	//flag = 1为修改								
+				$('#exampleModal').modal("show");
+				$("#exampleModalLabel").html("修改用户");	
+				$("#mmdiv").hide();
+				$("#username").val(obj.dlm);
+				$("#password").val(obj.mm);
+				$("#xm").val(obj.xm);
+				$("#yx").val(obj.yx);
+				$("#dh").val(obj.dh);
+				$("#bz").val(obj.bz);
+				$("#Adds option:selected").val(obj.yhjs);
+				$("#jsbz").val(obj.jsbz);
+				$("#tijiao").on("click",tijiaoFun);
 		
 	}
 	//删除用户操作
 	function delUser(){
-		
+		var IFyhbm=obj.yhbm;
+		console.log("用户编码：",IFyhbm);					
+		if (parseInt(IFyhbm)<=10001)
+		{					
+			$('#modal-delete').modal("show");
+			//$('#modal-delete').html("提示");
+			$('#gridSystemModalLabel').html("提示");
+			$('#InfoLabel').html("该条记录不可删除");						
+		}
+		else if(parseInt(IFyhbm)>10001){
+			$('#modal-delete').modal("show");
+//			$('#modal-delete').html("提示");
+			$("#queding").on('click',function(){					
+			//console.log("可以删除")
+			var deleUrl="http://192.168.44.232:8080/rest/user/delete?token="+"eyJhbGciOiJIUzI1NiIsImV4cCI6MTQ2MTc0Mjg4NSwiaWF0IjoxNDYxNzQyMjg1fQ.eyJpZCI6MTAwMDF9.waV41feUgDKbXyTy4H0yj4mCLWw6x1EakXaeJvKMgjg";
+            console.log("deleUrl", obj);
+            $.ajax({
+            	type:"post",
+            	url:deleUrl,
+            	async:true,
+            	dataType:'json',
+              	data:{
+              		"yhbm":obj.yhbm
+              	},
+              	success:function(TrData){
+          			console.log("删除信息：",TrData);
+          			if(TrData.status == "success"){
+          			$('#modal-delete').modal('hide');
+            		fullfillTable();	
+              			}else{
+              			alert("删除错误");
+              			}             			
+              		},
+              		error:function(err){
+            		console.log("err",err);
+            	}
+       		 });                						
+		});	
+			}
 	}
 	//增加用户，提交
 	function tijiaoFun(){
@@ -44,16 +97,17 @@
 	      var yxValue=$("#yx").val();              
 	      var dhValue=$("#dh").val();              
 	      var bzValue=$("#bz").val();    	              
-	      var yhjs=$('#Adds option:selected').val(); 
-	      console.log("yhjs:",yhjs);
-	      if(yhjs=="系统管理员"){
-	      	yhjsValue="1002001";
-	      }
-	      else if(yhjs=="系统用户"){
-	      	yhjsValue="1002002";
-	      }
+	      var yhjsValue=$('#Adds option:selected').val(); 	      
+	      console.log("yhjsValue:",yhjsValue);
+//	      if(yhjs=="系统管理员"){
+//	      	var yhjsValue="1002001";
+//	      }
+//	      else if(yhjs=="系统用户"){
+//	      	var yhjsValue="1002002";
+//	      }
+//	      console.log("用户角色",yhjsValue);
 	      var jsbzValue=$("#jsbz").val();
-	      if(!usernameValue||!passwordValue||!bzValue||!jsbzValue||!dhValue||!yxValue||!xmValue){
+	      if(!usernameValue||!bzValue||!jsbzValue||!dhValue||!yxValue||!xmValue){
 	      	alert("请填写完整信息");             	
 	      	return;
 	      } 
@@ -164,7 +218,40 @@
 		str+="</tbody></table>";					
 		console.log(str);
 		$("#UserTable-div").html(str);//把临时字符串以HTml格式嵌入到div元素中显示	
+		var highlightcolor='#E0F2FE';
+			var clickcolor='#66AFE9';
+		/**
+		* 鼠标移到的颜色
+		*/
+		$("#UserTable tr").mouseover(function(){
+		var Event =  window.event|| arguments.callee.caller.arguments[0] ;
+			   var source=Event.srcElement||Event.target;  			   
+			   if (source.tagName=="TD"){  
+			   source=source.parentElement;
+			   var cells = source.children; 
+			   if (cells[0].style.backgroundColor!=highlightcolor&&cells[0].style.backgroundColor!=clickcolor)
+			   for(i=0;i<cells.length;i++){
+			    cells[i].style.backgroundColor=highlightcolor;
+			   }  
+			 }
+		});
 		
+		/**
+		* 鼠标移出的颜色
+		*/
+		$("#UserTable tr").mouseout(function(){
+		var Event =  window.event|| arguments.callee.caller.arguments[0] ;
+			  var source=Event.srcElement||Event.target;  
+			  if (source.tagName=="TD"){ 
+			  source=source.parentElement;
+			  var cells = source.children; 
+			  if (cells[0].style.backgroundColor!=clickcolor) 
+			  for(i=0;i<cells.length;i++){
+			  cells[i].style.backgroundColor="";
+			   }  
+			 }
+		}); 
+
 																			
 			//获取用户点击某一行信息时该行全部单元格的数据\n						
 			obj = new Object();						
@@ -187,6 +274,20 @@
 			});			
 		});
 	}
+	function yhglVisibility(){		
+		//document.getElementById("right-xtrz-div").style.visibility="hidden";
+		
+		$("#right-yhgl-div").css("display","block");
+		$("#right-xtrz-div").css("display","none");
+		
+	}
+	function xtrzVisibility(){
+//		documen.getElementById("right-yhgl-div").style.visibility="hidden";
+//		documen.getElementById("right-xtrz-div").style.visibility="visible";
+		$("#right-yhgl-div").css("display","none");
+		$("#right-xtrz-div").css("display","block");
+	}
+	
 	
 	
 })(jQuery)
