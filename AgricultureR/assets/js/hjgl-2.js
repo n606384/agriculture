@@ -38,7 +38,8 @@
 	function getTotalCount(){
 		$.ajax({
 			type: 'POST',
-            url: 'http://192.168.44.232:8080/rest/hjgl/getSJBCount?token=aa',
+//          url: 'http://192.168.44.232:8080/rest/hjgl/getSJBCount?token=aa',
+			url: app.postUrls.getSJBCount,
             data: {},
             dataType: 'json',
             success:function(success){
@@ -52,7 +53,8 @@
 	function getSJBXX(nowpage){
 		$.ajax({
             type: 'POST',
-            url: 'http://192.168.44.232:8080/rest/hjgl/getSJBJYXX?token=aa',
+//          url: 'http://192.168.44.232:8080/rest/hjgl/getSJBJYXX?token=aa',
+			url: app.postUrls.getSJBJYXX,
             data: {ssqx:"0",page:nowpage},
             dataType: 'json',
             success: function (result) {
@@ -211,7 +213,8 @@
 				// console.log(getsjbbm);
 				$.ajax({
                     type: 'POST',
-                    url: 'http://192.168.44.232:8080/rest/hjgl/getSJBXXXX?token=aa',
+//                  url: 'http://192.168.44.232:8080/rest/hjgl/getSJBXXXX?token=aa',
+					url: app.postUrls.getSJBXXXX,
                     data: {sjbbm:getsjbbm},
                     dataType: 'json',
                     success: function (result) {
@@ -255,7 +258,8 @@
 				$('#updateSubmit').click(function(){
 					$.ajax({
 	                    type: 'POST',
-	                    url: 'http://192.168.44.232:8080/rest/hjgl/updateSJBXX?token=aa',
+//	                    url: 'http://192.168.44.232:8080/rest/hjgl/updateSJBXX?token=aa',
+						url: app.postUrls.updateSJBXX,                
 	                    data: {sjbbm:$('#sjbbm').val(),sjblx:$('#sjblx').val(),hjrybm:$('#hjrybm').val(),ssqx:$('#ssqx').val(),sjbzt:$('#sjbzt').val(),hjsjbjz:$('#hjsjbjz').val(),sjbmc:$('#sjbmc').val(),sjbdx:$('#sjbdx').val(),wjzs:$('#wjzs').val(),ccwz:$('#ccwz').val(),sjbms:$('#sjbms').val() },
 	                    dataType: 'json',
 	                    success: function (result) {

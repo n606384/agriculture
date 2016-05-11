@@ -18,7 +18,7 @@ $(function(){
 					app.serId = res.id;
 					console.log(app.token);
 					flag = true;
-					window.location.href = "hjyy.html?token="+app.token;
+					window.location.href = "hjgl.html?token="+app.token;
 					$.ajax({
 						type:"post",
 						url:"http://192.168.44.232:8080/rest/hjyy/getHJDWRYXX?token="+app.token,

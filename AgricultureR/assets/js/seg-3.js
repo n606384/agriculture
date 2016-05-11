@@ -34,17 +34,6 @@
 			});
 			console.log("data",tableData);
 			
-//			if(!app.sjbbm){
-//				var title="系统信息";
-//				var content="缺少数据包信息，请保存数据信息后再保存数据文件信息！";
-//				var footer = "<button  type='button' class='btn btn-default' data-dismiss='modal'>确定</button>";
-//				
-//				$("#modalTitleSJWJ").html(title);
-//				$("#modalContentSJWJ").html(content);
-//				$("#modalFooterSJWJ").html(footer);				
-//				$("#dialogModalSJWJ").modal('show');
-//				return;
-//			}
 			//判断是增加还是修改
 			if(checkSJWJ()){
 				for(var i = 0;i<tableData.length;i++){
@@ -76,7 +65,8 @@
 			
 			$.ajax({
 				type:"post",
-				url:"http://192.168.44.231:5000/hjyy/addSJWJXX?token=dd",
+//				url:"http://192.168.44.231:5000/hjyy/addSJWJXX?token=dd",
+				url:app.postUrls.addSJWJXX,
 				async:true,
 				dataType:'json',
 				data:formData

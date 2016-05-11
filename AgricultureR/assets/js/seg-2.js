@@ -34,24 +34,11 @@
 			}else{			
 				console.log("提交数据包formData", formData);
 				
-//				formData = {
-//					"sjblx" : "1007001",
-//				    "hjrybm":app.hjrybm,
-//				    "ssqx" : app.xianbm,
-//				    "sjbzt": "1008001",
-//				    "hjsjbjz" : "1006001",
-//				    "sjbmc" : "sjbmcFD",
-//				    "tjsj" : "2016-5-1",
-//				    "sjbdx" : "122",
-//				    "wjzs" : "122",
-//				    "ccwz" : "ccwzFD",
-//				    "sjbms" : "sjbmsFD"
-//			
-//				};
 				
 				$.ajax({
 					type:"post",
-					url:"http://192.168.44.231:8080/rest/hjyy/addSJBXX?token=ddd",
+//					url:"http://192.168.44.231:8080/rest/hjyy/addSJBXX?token=ddd",
+					url:app.postUrls.addSJBXX,
 					async:true,
 					dataType:'json',
 					data:formData,
@@ -207,25 +194,3 @@
 	}
 	
 })(jQuery)
-/*
- init=function(app){
-		//初始化县名称
-		$("#countySpanSJB").html(app.xianName);
-		
-		
-		$("#sjbmc");
-		$("#sjblx");
-		$("#hjsjbjz");
-		$("#sjbzt");
-		
-		$("#sjbdx");
-		$("#wjzs");
-		$("#ccwz");
-		$("#sjbms");
-		
-		//checkEmpty();
-		
-	};
-	
- * 
- * */

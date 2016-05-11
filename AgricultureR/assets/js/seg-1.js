@@ -303,7 +303,7 @@ $(function(){
 			type:"post",
 			//http://192.168.44.231:8080/rest/hjyy/addhjyyyh?token=ddd
 			//http://192.168.199.145:5000/hjyy/addhjyyyh?token=ddd
-			url:sUrl,
+			url:app.postUrls.addhjyyyh,
 			async:true,
 			dataType:'json',
 			data:formdata,
@@ -358,7 +358,8 @@ $(function(){
 	function fullfillDropMenu(){
 		$.ajax({
 			type:"post",
-			url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX",
+//			url:"http://192.168.44.231:8080/rest/hjyy/getHJDWRYXX",
+			url:app.postUrls.getHJDWRYXX,
 			async:true,
 			data:{
 				"ssqx":app.xianbm
