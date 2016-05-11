@@ -12,10 +12,26 @@
 		initPage();
 		
 	}
+	function centerModals() {
+	    $('#updateModal').each(function(i) { 
+	        var $clone = $(this).clone().css('display', 'block').appendTo('body'); var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);   
+	        top = top > 0 ? top : 0;   
+	        $clone.remove();   
+	        $(this).find('.modal-content').css("margin-top", top);
+	    });   
+	}
 	function initPage(){
 		
 		getSJBXX(1);
 		getTotalCount();
+		
+		$('#updateModal').on('show.bs.modal', centerModals);
+					
+		$("#updateModal").draggable({   
+		    handle: ".modal-header",   
+		    cursor: 'move',   
+		    refreshPositions: false  
+		}); 
 	}
 	
 	//获取数据包简要信息总条数
@@ -62,9 +78,26 @@
                	tableStr = null;
                	state = null;
 
+				
+				
                	//修改按钮点击事件
                	$('.updataInfo').click(function(){
+               		 
+					  
+					
 					$('#updateModal').modal('show');
+					
+				});	
+				
+				//修改按钮点击事件
+               	$('.check').click(function(){
+               		$("#updateModal").draggable({   
+					    handle: ".modal-header",   
+					    cursor: 'move',   
+					    refreshPositions: false 
+					});
+					$('#updateModal').modal('show');
+					  
 					
 				});	
 
