@@ -558,6 +558,14 @@ button:hover{
 	background-color: #FFFFFF;
 	overflow-y: auto;
 }
+
+#printContentPane{
+	
+	font-size: 17.5px !important;
+	font-family: "仿宋";
+	
+}
+
 .chushenResult{
 	width: 400px;
 	height: 200px;
@@ -591,4 +599,13 @@ button:hover{
 ..chushenResult_content ul li{
 	float: left;
 	text-align: center;
+}
+.bs-example{
+	margin-left: 0;
+    margin-right: 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
 }

@@ -38,7 +38,6 @@
 	function getTotalCount(){
 		$.ajax({
 			type: 'POST',
-//          url: 'http://192.168.44.232:8080/rest/hjgl/getSJBCount?token=aa',
 			url: app.postUrls.getSJBCount,
             data: {},
             dataType: 'json',
@@ -53,7 +52,6 @@
 	function getSJBXX(nowpage){
 		$.ajax({
             type: 'POST',
-//          url: 'http://192.168.44.232:8080/rest/hjgl/getSJBJYXX?token=aa',
 			url: app.postUrls.getSJBJYXX,
             data: {ssqx:"0",page:nowpage},
             dataType: 'json',
@@ -213,7 +211,6 @@
 				// console.log(getsjbbm);
 				$.ajax({
                     type: 'POST',
-//                  url: 'http://192.168.44.232:8080/rest/hjgl/getSJBXXXX?token=aa',
 					url: app.postUrls.getSJBXXXX,
                     data: {sjbbm:getsjbbm},
                     dataType: 'json',

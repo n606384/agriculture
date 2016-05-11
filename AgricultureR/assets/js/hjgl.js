@@ -55,7 +55,7 @@ $(function(){
 			//16	上传解析地块汇总表接口
 			"uploadDKHZB":"http://192.168.44.232:8080/rest/hzbg/uploadDKHZB" +urlTokenParm,
 			//17	上传解析承包地是否基本农田接口
-			"uploadCBDSFJBNT":"http://192.168.44.232:8080/rest /hzbg/uploadCBDSFJBNT" +urlTokenParm,
+			"uploadCBDSFJBNT":"http://192.168.44.232:8080/rest/hzbg/uploadCBDSFJBNT" +urlTokenParm,
 			//18	上传解析按权证信息汇总表接口
 			"uploadQZXXHZ":"http://192.168.44.232:8080/rest/hzbg/uploadQZXXHZ" +urlTokenParm,
 			//19	上传解析承包地土地用途汇总表接口
@@ -69,13 +69,13 @@ $(function(){
 			//23	获取汇交数据包简要信息接口
 			"getSJBJYXX":"http://192.168.44.232:8080/rest/hjgl/getSJBJYXX" +urlTokenParm,
 			//24	获取汇交数据包详细信息接口
-			"getSJBXXXX":"http://192.168.44.232:8080/rest/hjgl/ getSJBXXXX" +urlTokenParm,
+			"getSJBXXXX":"http://192.168.44.232:8080/rest/hjgl/getSJBXXXX" +urlTokenParm,
 			//25	修改汇交数据文件详细信息接口
 			"updateHJSJWJ":"http://192.168.44.232:8080/rest/hjgl/updateHJSJWJ" +urlTokenParm,
 			//26	查询汇交单位信息接口
 			"getHJDW":"http://192.168.44.232:8080/rest/hjgl/getHJDW" +urlTokenParm,
 			//27	修改汇交单位信息接口
-			"addhjyyyh":"http://192.168.44.232:8080/rest/hjyy/addhjyyyh" +urlTokenParm	
+			"addhjyyyh":"http://192.168.44.232:8080/rest/hjyy/addhjyyyh" +urlTokenParm
 			
 		};
 	initHJGL();

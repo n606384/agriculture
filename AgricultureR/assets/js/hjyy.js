@@ -129,6 +129,7 @@ $(function(){
 			
 			//页面渲染			
 			//数据填报，验证，和数据库提交
+			var a = new $.printTJZM(app);
 			
 		}else if(parseInt(flag) == 5){
 			
