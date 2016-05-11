@@ -21,9 +21,12 @@ $(function(){
 					url:"assets/hjglSeg-2.html",
 					async:true,
 					success:function(res){
-						console.log(res);
+						//console.log(res);
 						$("#paneLevel1").html(res);
-						$.getScript("assets/js/hjgl-2.js");
+						$.getScript("assets/js/hjgl-2.js").then(function(){
+							
+							var aa = new $.hjclProcess();
+						});
 						
 						
 						
@@ -64,7 +67,7 @@ $(function(){
 			url:"assets/hjglSeg-1.html",
 			async:true,
 			success:function(res){
-				console.log(res);
+				//console.log(res);
 				$("#paneLevel1").html(res);
 				$.getScript("assets/js/hjyy.js");
 			}
