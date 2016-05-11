@@ -16,6 +16,21 @@
 		 
 		 <div class="right-header-div" id="right-xtrz-div" style="display: none;">
 		 <h2>系统日志</h2>	
+		 <div id="TimeSerch">
+		 <p>
+		 	<span class="search_name">起始时间:</span>  
+		    <input type="text" id="starttime" readonly="readonly"  
+		    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',lang:'zh-cn',maxDate:'%y-%M-%d',minDate:'%y-%M-<%=a%>{%d-2}'})"  
+		    onchange="checkNull('starttime')"/>  
+		</p>  
+		<p>
+			<span class="search_name">结束时间:</span>  
+		    <input type="text" id="endtime" readonly="readonly" 
+		    onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',lang:'zh-cn',maxDate:'%y-%M-%d',minDate:'%y-%M-<%=a%>{%d-2}'})"   
+		    onchange="checkNull('endtime')"/>  
+	    </p>  
+	    <button type="button" onclick="query()" class="search_btn">查询</button>  
+		 </div>
 		 <div id="xtrzTable-div" class="xtrzTbablecal">
 		 	<table id="xtrzTable" class='table table-striped'>
 	 		<thead>
@@ -74,8 +89,8 @@
 	          <div class="form-group">
 	            <label for="message-text" class="control-label">角色代码：</label>
 	            <select class="juesedaima" name="yhjs" id="Adds">
-	                   	<option class="form-control value="系统管理员">系统管理员</option>
-	                   	<option class="form-control value="系统用户" selsected>系统用户</option>
+	                   	<option class="form-control value="1002001">系统管理员</option>
+	                   	<option class="form-control value="1002002" selsected>系统用户</option>
 	            <select>
 	            
 	            <!--input type="text" class="form-control" id="recipient-name"-->

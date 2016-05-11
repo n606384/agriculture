@@ -20,6 +20,7 @@
 		$("#updateUser").on('click',updateUser);
 		$("#YHGL-button").on('click',yhglVisibility);
 		$("#XTRZ-button").on('click',xtrzVisibility);
+		$("#XTRZ-button").on('click',xtrzNum);
 		
 		$('#exampleModal').on('show.bs.modal', centerModals);					
 		$("#exampleModal").draggable({
@@ -111,19 +112,28 @@
 	      var yxValue=$("#yx").val();              
 	      var dhValue=$("#dh").val();              
 	      var bzValue=$("#bz").val();    	              
-	      var yhjsValue=$('#Adds option:selected').val(); 	      
-	      console.log("yhjsValue:",yhjsValue);
-//	      if(yhjs=="系统管理员"){
-//	      	var yhjsValue="1002001";
-//	      }
-//	      else if(yhjs=="系统用户"){
-//	      	var yhjsValue="1002002";
-//	      }
-//	      console.log("用户角色",yhjsValue);
+	      var yhjs=$('#Adds option:selected').val(); 	      
+	      //console.log("yhjsValue:",yhjsValue);
+	      if(yhjs=="系统管理员"){
+	      	var yhjsValue="1002001";
+	      }
+	      else if(yhjs=="系统用户"){
+	      	var yhjsValue="1002002";
+	      }
+      console.log("用户角色",yhjsValue);
 	      var jsbzValue=$("#jsbz").val();
+	      
+	      //信息填写的判断
 	      if(!usernameValue||!bzValue||!jsbzValue||!dhValue||!yxValue||!xmValue){
-	      	alert("请填写完整信息");             	
+	      	alert("请填写完整信息");     
+//	      var yxExpression=/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+//	      var objExp=new RegExp(yxExpression);
+//	      if(objExp.test(yxValue)==false){
+//	      	console.log("邮箱验证：",objExp.test(yxValue));
+//	      	alert("电子邮箱填写不正确");
+//	      }
 	      	return;
+	      
 	      } 
 	  if(flag == 0){
 	  	//新增
@@ -267,27 +277,28 @@
 		}); 
 
 																			
-			//获取用户点击某一行信息时该行全部单元格的数据\n						
-			obj = new Object();						
-			$("#UserTable tbody tr").each(function(i){						    
-			    $(this).click(function(i){
-			    	$("#UserTable tbody tr").css("background-color","");
-			    $(this).css("background-color","#99FFCC");
-			    
-			 	  obj.dh = $(this).children("td").eq(0).text();
-			 	  obj.yx = $(this).children("td").eq(1).text();
-			 	  obj.yhbm = $(this).children("td").eq(2).text();
-			 	  obj.xm = $(this).children("td").eq(3).text();
-			 	  obj.dlm = $(this).children("td").eq(4).text();
-			 	  obj.yhjs = $(this).children("td").eq(5).text();
-			 	  obj.jsbz = $(this).children("td").eq(6).text();
-			 	  obj.bz = $(this).children("td").eq(7).text();
-			 	  console.log(obj);
-			 	  //$("#usename").val()=$(this).children("td").eq(0).text();						 	   
-			    });
-			});			
-		});
+		//获取用户点击某一行信息时该行全部单元格的数据\n						
+		obj = new Object();						
+		$("#UserTable tbody tr").each(function(i){						    
+		    $(this).click(function(i){
+		    	$("#UserTable tbody tr").css("background-color","");
+		    $(this).css("background-color","#99FFCC");		    
+		 	  obj.dh = $(this).children("td").eq(0).text();
+		 	  obj.yx = $(this).children("td").eq(1).text();
+		 	  obj.yhbm = $(this).children("td").eq(2).text();
+		 	  obj.xm = $(this).children("td").eq(3).text();
+		 	  obj.dlm = $(this).children("td").eq(4).text();
+		 	  obj.yhjs = $(this).children("td").eq(5).text();
+		 	  obj.jsbz = $(this).children("td").eq(6).text();
+		 	  obj.bz = $(this).children("td").eq(7).text();
+		 	  console.log(obj);
+		 	  //$("#usename").val()=$(this).children("td").eq(0).text();						 	   
+		    });
+		});			
+	});
 	}
+	
+	//设置用户管理和系统日志的可见性
 	function yhglVisibility(){		
 		//document.getElementById("right-xtrz-div").style.visibility="hidden";
 		
@@ -296,11 +307,10 @@
 		
 	}
 	function xtrzVisibility(){
-//		documen.getElementById("right-yhgl-div").style.visibility="hidden";
-//		documen.getElementById("right-xtrz-div").style.visibility="visible";
 		$("#right-yhgl-div").css("display","none");
 		$("#right-xtrz-div").css("display","block");
 	}
+	//居中并可以拉动模块框
 	function centerModals() {
 	$('#exampleModal').each(function(i) { 
 	        var $clone = $(this).clone().css('display', 'block').appendTo('body'); var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);   
@@ -317,6 +327,124 @@
 	        $(this).find('.modal-content').css("margin-top", top);
 	    });   
 	}
-	
+    //获取系统日志的数量
+    function xtrzNum(){
+    	//修改
+	  	var xtrzNumUrl="http://192.168.44.232:8080/rest/xtrz/getlogCount";
+	  	$.ajax({
+	  		type:"post",
+	  		url:xtrzNumUrl,
+	  		dataType:"json",
+	  		async:true,
+	  		success:function(data){	  			
+	  			console.log("日志数量:",data);
+	  			var page=Math.round(data/20);
+	  			//获取日志信息接口
+	  			var xtrzDetailUrl="http://192.168.44.232:8080/rest/xtrz/getlogInfo";
+	  			console.log("xtrzDetailUrl:",xtrzDetailUrl);
+	  			$.ajax({
+	  				type:"post",
+	  				url:xtrzDetailUrl,
+	  				async:false,
+	  				dataType:"json",	  				
+	  				data:{	  					
+	  					"startTime":"0",
+	  					"endTime":"0",
+	  					"page":"1"
+	  				},
+	  				success:function(mes){
+	  					console.log("返回日志信息：",mes);
+	  				},
+	  				error:function(error){
+	  				console.log("获取用户信息错误：",error);	
+	  				}
+	  				
+	  			});
+	  		},
+	  		error:function(err){
+	  			console.log("获取数量错误:",err);
+	  		}
+	  	});
+	  	}
+    
+        /*  
+                检测时间是否为空 */  
+            function checkNull(id){  
+                //开始时间  
+                if(id == "starttime"){  
+                    startTime = $("#starttime").val();  
+                      
+                    if(isNull(startTime)){  
+                        alert("起始时间不能为空");  
+                        return false;  
+                    }  
+                    return true;  
+                }  
+                  
+                //结束时间  
+                if(id == "endtime"){  
+                    endTime = $("#endtime").val();  
+                      
+                    if(isNull(endTime)){  
+                        alert("结束时间不能为空");  
+                        return false;  
+                    }  
+                    return true;  
+                }  
+            }  
+              
+            /* 
+                检测开始时间是否小于结束时间（字符串也可以之间比较难控制相差的时间长度，使用毫秒计算） */  
+            function checkDate(){  
+                var startTimeMills = getDateMillsByDateString("starttime");  
+                var endTIimeMills =  getDateMillsByDateString("endtime");  
+                //开始时间和结束世间的最大间隔：3天  
+                var interval = 3*24*60*60*1000;  
+                  
+                if(startTimeMills < endTIimeMills && 0 < endTIimeMills - startTimeMills < interval){  
+                    return true;  
+                }  
+                alert("起始时间需要小于结束时间");  
+                return false;  
+            }  
+              
+            /* 
+                查询 操作*/  
+            function query(){  
+                if(!checkNull('starttime')){  
+                    return ;  
+                }  
+                if(!checkNull('endtime')){  
+                    return;  
+                }  
+                if(!checkDate()){  
+                    return;  
+                }  
+                  
+                $("#form1").submit();  
+            }  
+              
+            //将字符串时间(yyyy-MM-dd HH:mm:ss)转换成毫秒  
+            function getDateMillsByDateString(timeId){  
+                var timeStr = $("#" + timeId).val();  
+                  
+                var dateAndTimeArray = timeStr.split(" ");  
+                var dateArray = dateAndTimeArray[0].split("-");  
+                var timeArray = dateAndTimeArray[1].split(":");  
+                  
+                var date = new Date(dateArray[0],dateArray[1],dateArray[2],timeArray[0],timeArray[1],timeArray[2]);  
+                  
+                var dateMills = date.getTime();  
+                  
+                return dateMills;  
+            }              
+            //判断字符串时间是否为空  
+            function isNull(timeString){  
+                if(timeString == null || timeString == ""){  
+                    return true;  
+                }  
+                return false;  
+            }  
+
 	
 })(jQuery)
