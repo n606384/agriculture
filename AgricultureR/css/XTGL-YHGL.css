@@ -1,4 +1,4 @@
-ul,li,ol{
+#right-yhgl-div ul,li,ol{
 	list-style: none;
 }
 .left-tag-div{
@@ -46,6 +46,7 @@ ul,li,ol{
 	
 	color:#F1A01B;
 	font-size: 22px;
+	font-family: "微软雅黑";
 	
 }
 .right-header-div ul{
@@ -84,33 +85,45 @@ border-radius: 4px;
 	position: relative;
 	
 }
-label{
+.modal-body .form-group label{
 	font-size: 14px;
 }
-h2{
-	font-family: "微软雅黑";
-	font-size: 16px;
-	color: #FFFFFF;
-}
-.cursor{
+ 
+.modal-body .cursor{
 	cursor: pointer
 }
-.form-group span{
+.modal-body .form-group span{
 	display: inline-block;
 	color: red;
 	position: absolute;
 	float: left;
 	left: 77%;
 }
-.form-group label{
+.modal-body .form-group label{
 	display: block;
 	max-width: 100%;
 	margin-bottom: 5px;
 	font-weight: 700;
+	float: left;
 }
-.form-group input{
+.modal-body .form-group input{
 	display: inline-block;
 }
-.form-group select{
+.modal-body .form-group select{
 	border-color: #E2E2E2;
+}
+.xtrzTbablecal{
+	margin: 10px;
+}
+#addYH h2{
+	font-size: 18px;
+}
+#deleYH h2{
+	font-size: 18px;
+}
+#addYH{
+	padding: 2px;
+}
+#bodymodal{
+	padding: 5px;
 }
