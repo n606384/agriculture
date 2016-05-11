@@ -21,6 +21,20 @@
 		$("#YHGL-button").on('click',yhglVisibility);
 		$("#XTRZ-button").on('click',xtrzVisibility);
 		
+		$('#exampleModal').on('show.bs.modal', centerModals);					
+		$("#exampleModal").draggable({
+		    handle: ".modal-header",   
+		    cursor: 'move',   
+		    refreshPositions: false  
+		}); 
+		
+		$('#modal-delete').on('show.bs.modal', centerdeleModals);					
+		$("#modal-delete").draggable({
+		    handle: ".modal-header",   
+		    cursor: 'move',   
+		    refreshPositions: false  
+		}); 
+		
 	}
 	//增加用户弹出框
 	function addUser(){
@@ -287,7 +301,22 @@
 		$("#right-yhgl-div").css("display","none");
 		$("#right-xtrz-div").css("display","block");
 	}
-	
+	function centerModals() {
+	$('#exampleModal').each(function(i) { 
+	        var $clone = $(this).clone().css('display', 'block').appendTo('body'); var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);   
+	        top = top > 0 ? top : 0;   
+	        $clone.remove();   
+	        $(this).find('.modal-content').css("margin-top", top);
+	    });   
+	}
+    function centerdeleModals() {
+	$('#modal-delete').each(function(i) { 
+	        var $clone = $(this).clone().css('display', 'block').appendTo('body'); var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);   
+	        top = top > 0 ? top : 0;   
+	        $clone.remove();   
+	        $(this).find('.modal-content').css("margin-top", top);
+	    });   
+	}
 	
 	
 })(jQuery)
