@@ -1,0 +1,305 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.banner{
+	width: 100%;
+	background-color: #229a56;
+	height: 64px;
+}
+.footer{
+	width: 100%;
+	height: 40px;
+	background-color: #229A56;
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	vertical-align: middle;
+	line-height: 40px;
+	font-size: 1.2em;
+}
+.logoPane{
+	width: 30%;
+	float: left;
+	left: 0px;
+	height: 64px;
+	text-align: center;
+}
+.navPane{
+	width: 50%;
+	float: left;
+	right: 0px;
+	height: 64px;
+	text-align: center;
+	
+}
+.tipsPane{
+	width: 20%;
+	height: 64px;
+	float: left;	
+	right: 10px;			
+	/*margin-right: 10px;*/
+	/*border: solid 1px red;*/
+	
+}
+.titlePane{				
+	vertical-align: middle;			
+	line-height: 1.42857143em;
+	font-size: 1.8em;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.navMenu{
+	list-style: none;				
+	margin-right: 10px;				
+	float: right;
+	font-size: 1.4em;
+	
+}		
+.navMenu li{
+	float: left;
+	line-height: 64px;
+	vertical-align: middle;
+	text-align: center;
+	margin-left: 5px;
+	
+}
+.navMenu li a{
+	color: #FFFFFF;
+	padding: 5px 10px;
+	border-radius:5px;	
+	outline: none;
+	
+}
+.navMenu li a:hover{
+	text-decoration:none;
+	border: solid 1px #65B889;
+	background-color: #65B889;
+	padding: 5px 10px;
+}
+.navMenu li a:focus{
+	text-decoration:none;
+	border: solid 1px #F1A01B;
+	background-color: #F1A01B;
+	padding: 5px 10px;
+}			
+
+.tipAuthor{
+	list-style: none;
+	padding-right:10px;
+	float: right;
+	color: #FFFFFF;
+	
+}
+.tipAuthor li{
+	font-size: 12px;				
+	float: left;
+	line-height: 64px;
+	vertical-align: middle;
+	text-align: center;
+	margin-left: 15px;
+}
+.container{
+	/*border: dashed 1px red;*/
+	width: 100%;
+}	
+.statusBar{
+	width: 100%;
+	height: 150px;
+	/*border: solid 1px #00A4A2;*/	
+	text-align: center;
+	
+	vertical-align: middle;
+	line-height: 170px;
+}
+.statusLine{
+	width: 93%;	
+	height: 65px;
+	margin:  auto;
+	border-bottom: solid 2px rgb(244,244,244);
+}
+.statusMenu{
+	list-style: none;
+	position: absolute;
+	margin: 50px auto;
+	width: 95%;
+	z-index: 5299;
+	top: 45px;
+	left: 2.5%;
+	
+}
+.statusMenu li{
+	display:  inline;
+	float: left;
+	width: 20%;
+	height: 67px;
+	margin: auto;
+}
+.statusMenu li div{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 67px;
+	/*text-decoration: none;
+	border: solid 0.5px #229a56;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;*/
+	background: url(../img/status.png) no-repeat center;
+	white-space:pre-wrap;
+	word-wrap : break-word ;
+}
+.statusMenu li div:hover{
+	cursor:default;
+	}
+.statusMenu li div span{
+	text-align: center;	
+	margin: auto;	
+	width: 45px;
+	word-break:normal;
+	display:block; 
+	white-space:pre-wrap;
+	word-wrap : break-word ;
+	overflow: hidden ;
+	line-height: 14px;
+	vertical-align: middle;
+	padding-top: 20px;
+	color: #FFFFFF;
+}
+.tipTab{
+	width: 95%;
+	margin: auto;
+	border-bottom: solid 3px #0fb3d6;
+}
+.tipTab div{
+	width: 120px;
+	height: 50px;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	color: #FFFFFF;
+	background-color:#0FB3D6 ;
+	bottom: 0px;
+	left: 0px;
+	font-size: 1.3em;
+	font-weight: bolder;
+	letter-spacing: 2px;
+}
+.contentPane{
+	width: 95%;
+	margin: auto;
+	
+}
+.queryFM{
+	width: 100%;
+	height: 50px;
+	background-color: #ededed;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+.contentFM{
+	width: 100%;
+	height: 500px;
+	background-color: #F8F8F8;
+}
+.queryFilter{
+	float: left;
+	left: 0px;
+	width: 13%;
+	height: 100%;
+	border-right: solid 2px #cbcbcb;
+	
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	color: #f1a016;
+	font-weight: bolder;
+}
+.districtFilter{
+	float: left;
+	right: 0px;
+	width: 87%;
+	height: 100%
+}
+.districtFilter ul{
+	width: 100%;
+	text-align: center;
+	list-style: none;
+}
+.districtFilter ul li{
+	float: left;
+	vertical-align: middle;
+	line-height: 50px;
+	width: 33%;
+}
+.districtFilter ul li select{
+	width: 210px;
+}
+.countySpan{
+	text-align: center;	
+	
+}
+.countySpan span{
+	position: relative;
+	top: 15px;
+}
+#countySpan{
+	padding: 10px;
+	text-align: center;
+	font-family: "微软雅黑";
+	color: #F1A016;
+	font-weight: bolder;
+	font-size: 1.5em;
+	letter-spacing: 3px;
+}
+.contentFM form{
+	margin:30px auto;
+}
+.formLeftPane{
+	float: left;
+	width: 42%;
+	margin-left: 5em;
+	
+}
+.formLeftPane .input-group{
+	width: 100%;
+}
+.formRightPane{
+	float: right;
+	width: 42%;
+	margin-right: 5em;
+}
+.operPane{
+	width: 80%;
+	text-align: center;
+	margin: auto;
+}
+.operPane button{
+	width: 100px;
+	height: 40px;
+	/*margin: 20px 15px;
+	color: #FFFFFF;*/
+	background-color:#0FB3D6;
+	margin-top: 2em;
+	outline: none;
+}
+.oprBtn{
+	text-align: center;
+}
+.oprBtn button{
+	margin: auto;
+	padding: 15px;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,352 @@
+<div style="width: 95%;height: 100%;margin: 20px auto;">
+	
+    <table id="hjcl_table">
+       <thead>
+        <tr>
+            <th data-field="sjbbm">数据包编码</th>
+            <th data-field="sjbmc">数据包名称</th>
+            <th data-field="hjr">汇交人</th>
+            <th data-field="hjsj">汇交时间</th>
+            <th data-field="clr">处理人</th>
+            <th data-field="sjbzt">汇交状态</th>
+            <th data-field="oper">操作</th>
+        </tr>
+        </thead>      
+    </table>
+    <!--弹出框-->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" style="width: 1000px">
+	    <div class="modal-content" style="width: 1000px;">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">修改界面</h4>
+	      </div>
+	      <!--修改界面内容-->
+	      <div class="modal-body">
+	        
+	      	<!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">用户信息</a></li>
+		    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">数据包信息</a></li>
+		    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">文件信息</a></li>
+		  </ul>
+		  <!-- Tab panes -->
+		  <div class="tab-content">
+		  <!--人员信息面板-->
+		    <div role="tabpanel" class="tab-pane active" id="home">
+			    <form id="hjryxx_hjcl" class="form-horizontal"  role="form" method="post" onsubmit="return false;">
+			    	<br />
+					<div class="formLeftPane_hjcl">												
+						<div class="form-group">
+						    <label for="hjdwmc_hjcl" class="control-label">汇交单位名称&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						      <input type="text" class="form-control" id="hjdwmc_hjcl" placeholder="汇交单位名称">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label for="hjdwxz_hjcl" class="control-label">汇交单位性质&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						     <select id="hjdwxz_hjcl" class="form-control">
+						      	<option value="1003001" data-id="1003001" data-name="农业系统单位">农业系统单位</option>
+						      	<option value="1003002" data-id="1003002" data-name="开发商">开发商</option>
+						      </select>
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label for="hjdwdz_hjcl" class="control-label">汇交单位地址&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						      <input type="text" class="form-control" id="hjdwdz_hjcl" placeholder="汇交单位地址">
+						    </div>
+						</div>
+												
+					
+					</div>
+					<div class="formRightPane_hjcl">
+						
+						<div class="form-group">
+						    <label for="hjrxm_hjcl" class="control-label">汇交人员&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						      <input type="text" class="form-control" id="hjrxm_hjcl" placeholder="汇交人员">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label for="lxdh_hjcl" class="control-label">联系电话&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						      <input type="tel" class="form-control" id="lxdh_hjcl" placeholder="联系电话">
+						    </div> 
+						</div>									
+						
+						<div class="form-group">
+						    <label for="lxyx_hjcl" class="control-label">联系邮箱&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						     <input type="email" class="form-control" id="lxyx_hjcl" placeholder="联系邮箱" name="yx">
+						    </div>
+						</div>
+						
+						<div class="form-group">
+						    <label for="txdz_hjcl" class="control-label">通信地址&nbsp;&nbsp;</label>
+						    <div class="input-group">
+						      <input type="text" class="form-control" id="txdz_hjcl" placeholder="通信地址">
+						    </div>
+						</div>
+						
+						
+					</div>
+					<div style="clear: both;"></div>
+					
+						<!--<input type="button" id="reset" value="重置" />
+						<input type="submit" id="submit_yy1" value="下一步"  />-->
+		
+				</form>
+
+	    		 
+		    </div>
+		    <!--数据包信息面板-->
+		    <div role="tabpanel" class="tab-pane" id="profile">
+		    	<form id="hjryxx_hjcl" class="form-horizontal"  role="form" method="post" onsubmit="return false;">
+				<br />
+				<div class="formLeftPane_hjcl">					
+					<div class="form-group">
+					    <label for="sjbmc_hjcl" class="control-label">数据包名称</label>						    
+					    <div class="input-group">
+		                    <input type="text" name="sjbmc_hjcl" id="sjbmc_hjcl" class="form-control" required="">
+		             
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="sjblx_hjcl" class="control-label">数据包类型</label>							    
+					    <div class="input-group">
+		                    <div class="input-group">
+						     <select id="sjblx_hjcl" class="form-control">
+						      	<option value="1007001" data-id="1007001" data-name="压缩文件">压缩文件</option>
+						      	<option value="1007002" data-id="1007002" data-name="文件夹">文件夹</option>
+						      	<option value="1007003" data-id="1007003" data-name="镜像文件">镜像文件</option>
+						      </select>
+						    </div>
+		                    		                    
+		                </div>			    
+					</div>
+					<div class="form-group">
+					    <label for="sjbjzlx_hjcl" class="control-label">汇交介质类型</label>						
+					    <div class="input-group">
+						     <select id="sjbjzlx_hjcl" class="form-control">
+						      	<option value="1006001" data-id="1006001" data-name="光盘">光盘</option>
+						      	<option value="1006002" data-id="1006002" data-name="移动硬盘">移动硬盘</option>
+						      	<option value="1006003" data-id="1006003" data-name="U盘">U盘</option>
+						      </select>
+						</div>
+					    				    
+					</div>
+					
+				</div>
+				<div class="formRightPane_hjcl">
+					
+					<div class="form-group">
+					    <label for="sjbdx_hjcl" class="control-label">数据包大小</label>							    
+					    <div class="input-group">
+		                    <input type="number" name="sjbdx_hjcl" id="sjbdx_hjcl" class="form-control">
+		                   
+		                </div>							    
+					</div>
+					<div class="form-group">
+					    <label for="wjzs_hjcl" class="control-label">文件总数</label>			    
+					    <div class="input-group">
+		                    <input type="number" name="wjzs_hjcl" id="wjzs_hjcl" class="form-control">
+		                    
+		                </div>					    
+					</div>
+					<div class="form-group">
+					    <label for="ccwz_hjcl" class="control-label">存储位置</label>							    
+					    <div class="input-group">
+		                    <input type="text" name="ccwz_hjcl" id="ccwz_hjcl" class="form-control">
+		                   
+		                </div>							    
+					</div>
+					
+					
+				</div>
+				
+				<div style="clear: both;"></div>
+				</form>
+
+		    </div>
+		    <div role="tabpanel" class="tab-pane" id="messages">		    	
+		    	<form class="form-horizontal"  role="form" method="post" onsubmit="return false;">
+		    		
+		    		<table id="sjwjTable_hjcl">
+		    			<thead>
+		    				<tr>
+		    					<th data-field="wjlx" data-editable="false">文件类型</th>
+		    					<th data-field="wjdx" data-editable="true">文件大小</th>
+		    					<th data-field="wjsl" data-editable="true">文件数量</th>
+		    					<th data-field="wjms" data-editable="true">文件描述</th>
+		    					
+		    				</tr>
+		    			</thead>
+		    		</table>
+		    				    		
+		    		
+		    	</form>		    	
+		    </div>
+		  </div>
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关  闭</button>
+	        <button type="button" class="btn btn-primary" id="updateSubmit_hjcl">保  存</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="zhijianModal" tabindex="-1" role="dialog" aria-labelledby="zhijianmodalTitleHJCL" aria-hidden="true">
+	  <div class="modal-dialog" style="width: 1000px;max-height: 700px;">
+	    <div class="modal-content" style="width: 1000px;">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 id="zhijianmodalTitleHJCL" class="modal-title">质检信息录入</h4>
+	      </div>
+	      <div id="zhijianmodalContentHJCL" class="modal-body">
+	        	<div style="width: 100%;height: 100%;">
+	        		<div style="height: 20%;">
+	        			<div class="form-group">
+						    <label for="zhijianInputFile">质检信息</label>
+						    <input type="file" id="zhijianInputFile" name="json">
+						    <p class="help-block"></p>
+						</div>
+	        		</div>
+	        		<div id="tablePane_zhijian">
+		        		<table class="table" id="zhijianListTable">
+		        				
+		        		</table>
+	        		</div>
+	        		<div>	        			
+						<div class="form-group">
+							<dl id="zhijianDL" class="dl-horizontal dl_zhijian">
+								<dt>质检审核意见：</dt>
+								<dd>								
+									<label>
+								      <input name="zhijianRes"  type="radio" value="0" checked="true"> 通过
+								    </label>
+								    <label>
+								      <input name="zhijianRes" type="radio" value="1">未通过
+								    </label>
+								</dd>
+							</dl>
+						    <label for="sjbms_zhijian" class="control-label">质检意见</label>
+						    <textarea class="form-control" rows="5"  id="zjbz_zhijian"></textarea>
+						    						    
+						</div>
+						<div style="width:100%; margin: 5px auto;text-align: center;">
+							<button id="updateSJB_zhijian" class="btn btn-success btn-success-outline">修   改</button>&nbsp;&nbsp;&nbsp;&nbsp;
+							<button id="saveSJB_zhijian" class="btn btn-success btn-success-outline">保   存</button>
+						</div>
+	        		</div>
+	        	</div>
+	      </div>
+	      <div id="modalFooterSJB" class="modal-footer">
+	        <button  type="button" class="btn btn-default" data-dismiss="modal">确   定</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- Modal -->
+	<div class="modal fade" id="rukuModal" tabindex="-1" role="dialog" aria-labelledby="rukumodalTitleHJCL" aria-hidden="true">
+	  <div class="modal-dialog" style="width: 1000px;max-height: 700px;">
+	    <div class="modal-content" style="width: 1000px;">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 id="rukumodalTitleHJCL" class="modal-title">汇总信息入库</h4>
+	      </div>
+	      <div id="rukumodalContentHJCL" class="modal-body">
+	        	<div style="width: 100%;height: 100%;">
+	        			        		
+	        		<div class="form-group">
+					    <label for="dkhzbInputFile">权属单位代码表</label>
+					    <input type="file" id="qsdwbmbInputFile" name="qsdwbmb" accept=".xls,.xlsx">
+					    <a style="display: none;" id="qsdwbmbLink" data-id="qsdwbmb" class="btn-link tableDetailLink">权属单位代码表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="dkhzbInputFile">按地块汇总表</label>
+					    <input type="file" id="dkhzbInputFile" name="dkhzb" accept=".xls,.xlsx">
+					    <a style="display: none;" id="dkhzbLink" data-id="dkhzb" class="btn-link tableDetailLink">按地块汇总表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="cbdsfjbntInputFile">按承包地是否基本农田汇总表</label>
+					    <input type="file" id="cbdsfjbntInputFile" name="cbdsfjbnt" accept=".xls,.xlsx">
+					    <a  style="display: none;" id="cbdsfjbntLink" data-id="cbdsfjbnt" class="btn-link tableDetailLink">按承包地是否基本农田汇总表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="qzxxhzInputFile">按权证信息汇总表</label>
+					    <input type="file" id="qzxxhzInputFile" name="qzxxhz" accept=".xls,.xlsx">
+					    <a style="display: none;" id="qzxxhzLink" data-id="qzxxhz" class="btn-link tableDetailLink">按权证信息汇总表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="cbtdytInputFile">按承包地土地用途汇总表</label>
+					    <input type="file" id="cbtdytInputFile" name="cbtdyt" accept=".xls,.xlsx">
+					    <a style="display: none;" id="cbtdytLink" data-id="cbtdyt" class="btn-link tableDetailLink">按承包地土地用途汇总表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="cbfhzInputFile">按承包方汇总表</label>
+					    <input type="file" id="cbfhzInputFile" name="cbfhz" accept=".xls,.xlsx">
+					    <a style="display: none;" id="cbfhzLink" data-id="cbfhz" class="btn-link tableDetailLink">按承包方汇总表详情</a>
+					</div>
+					<div class="form-group">
+					    <label for="fcbddklbhzInputFile">按非承包地地块类别汇总表</label>
+					    <input type="file" id="fcbddklbhzInputFile" name="fcbddklbhz"  accept=".xls,.xlsx">
+					    <a style="display: none;" id="fcbddklbhzLink" data-id="fcbddklbhz" class="btn-link tableDetailLink">按非承包地地块类别汇总表详情</a>
+					</div>
+					
+	        	</div>
+	      </div>
+	      <div  class="modal-footer">
+	        <button  type="button" class="btn btn-default" data-dismiss="modal">确   定</button>
+	        <button id="xlsSaveBtn"  type="button" class="btn btn-default btn-primary" data-dismiss="modal">保   存</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- Modal -->
+	<div class="modal fade" id="dialogModalHZBG" tabindex="-1" role="dialog" aria-labelledby="modalTitleHZBG" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 id="modalTitleHZBG" class="modal-title">表格详情</h4>
+	      </div>
+	      <div id="modalContentHZBG" class="modal-body">
+	        <p id="tableName"></p>
+	        <table id="hjbgTable" class="table"></table>
+	      </div>
+	      <div id="modalFooterSJB" class="modal-footer">
+	        <button  type="button" class="btn btn-default" data-dismiss="modal">确   定</button>	        
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- Modal -->
+	<div class="modal fade" id="dialogModalHJCL" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 id="modalTitleHJCL" class="modal-title"></h4>
+	      </div>
+	      <div id="modalContentHJCL" class="modal-body">
+	        ...
+	      </div>
+	      <div id="modalFooterHJCL" class="modal-footer">
+	        <button  type="button" class="btn btn-default" data-dismiss="modal">确   定</button>	        
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>
+
+
+	

@@ -1,0 +1,296 @@
+<div style="width: 100%;height: 100%;">
+	 <div class="left-tag-div" id="left-tag-div">
+	 	<input type="button" id="YHGL-button" class="btn btn-info" value="用户管理"  />
+	 	<input type="button" id="XTRZ-button" class="btn btn-info" value="系统日志" />
+	 	<input type="button" id="HJDW-button" class="btn btn-info" value="汇交单位"/>
+	 	<input type="button" id="HJRY-button" class="btn btn-info" value="汇交人员"/>
+	 </div>
+	 <div class="right-container-div" id="rightContain">
+		 <div class="right-header-div" id="right-yhgl-div" style="display: block;">
+		 	<h2>用户管理</h2>
+		 	<ul id="ulyhgl">
+		    	<li><a class="cursor" data-toggle="modal" data-target="changeModal" id="updateUser" ><img src="img/xiugai.png" /></a></li>
+		 		<li><a class="cursor" data-toggle="modal" data-target="modal-delete" id="delUser"><img src="img/shanchu.png" /></a></li>
+		 		<li class="zengjia-li"><a class="cursor" data-toggle="modal" id="addUser"><img src="img/zengjia.png" /></a></li>
+		 	</ul>	
+		 	<div id="UserTable-div"></div>	 
+		 
+		 <div id="toolbar" style="float: left;">
+            <button id="refresh_button" class="btn btn-default">refreshOptions</button>
+        </div>
+		 <div id=yhgl-table-div>
+		 	<table id="yhglTable">
+		 		<thead>
+		 		  <tr>
+		 		  	<th data-field="yhglstatus"  data-checkbox="true" data-checkbox-header="false"></th>	 			
+		 			<th data-field="xm">姓名</th>
+		 			<th data-field= "dlm">登录名</th>
+		 			<th data-field="dh">电话</th>
+	 				<th data-field="yx">邮箱</th>
+	 				<th data-field="yhbm">用户编码</th>				 					
+	 				<th data-field= "yhjs">用户角色</th>
+	 				<th data-field= "jsbz">角色备注</th>
+	 				<th data-field= "bz">备注</th>	 				
+		 		  </tr>
+		 		</thead>
+		 		
+		 	</table>
+		 </div>
+		</div>
+		 
+	<div class="right-header-div" id="right-xtrz-div" style="display: none;">
+		<h2>系统日志</h2>	
+		<div id="timeChose">
+			选择时间段： <input id="date-range1" size="30" value="">	
+			<input type="button" id="TimeChaxun" value="查询">
+		</div>
+		<div id="xtrzTable-div" class="xtrzTbablecal">			
+		  <table id="xtrzTable" class="table table-striped">		  	
+	 		<thead>
+	 			<tr>
+	 				<th data-field="czsj">操作时间</th>
+	 				<th data-field="czxw">操作行为</th>
+	 				<th data-field="dlm">操作的系统用户</th>
+	 				<th data-field="xwms">行为描述</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody id="xtrzTbody">	 			
+	 		</tbody>
+		  </table>
+		</div>		 	 
+	</div>
+	
+	<div class="right-header-div" id="right-hjdw-div" style="display: none;">
+		<h2>汇交单位</h2>		
+		<ul id="ulhjdw">
+		    <li><a class="cursor" data-toggle="modal" data-target="changeModal" id="updateHJDW" ><img src="img/xiugai.png" /></a></li>		 		
+		 </ul>	
+		<div id="hjdwTable-div">			
+		  <table id="hjdwTable">		  	
+	 		<thead>
+	 			<tr>
+	 				<th data-field="hjdwstate"  data-checkbox="true" data-checkbox-header="false"></th>
+	 				<th data-field="hjdwbm">汇交单位编码</th>
+	 				<th data-field="hjdwdz">汇交单位地址</th>
+	 				<th data-field="hjdwmc">汇交单位名称</th>	 
+	 				<th data-field="hjdwxz">汇交单位性质</th>	 
+	 			</tr>
+	 		</thead>
+	 		<tbody id="hjdwTbody">	 			
+	 		</tbody>
+		  </table>
+		 </div>		 	 
+    </div>	
+    
+    <div class="right-header-div" id="right-hjry-div" style="display: none;">
+		<h2>汇交人员</h2>		
+		<ul id="ulyhjry">
+		    <li><a class="cursor" data-toggle="modal" data-target="changeModal" id="updateHJRY"  ><img src="img/xiugai.png" /></a></li>		 		
+		 </ul>	
+		<div id="hjryTable-div">			
+		  <table id="hjryTable">		  	
+	 		<thead>
+	 			<tr>	 
+	 				<th data-field="hjrystate"  data-checkbox="true" data-checkbox-header="false"></th>
+	 				<th data-field="hjrxm">汇交人姓名</th>
+	 				<th data-field="hjrybm">汇交人员编码</th>	 
+	 				<th data-field="hjrydwmc">汇交人员单位名称</th>
+	 				<th data-field="lxdh">联系电话</th>
+	 				<th data-field="lxyx">联系邮箱</th>	 
+	 				<th data-field="txdz">通讯地址</th>
+	 			</tr>
+	 		</thead>
+	 		<tbody id="hjryTbody">	 			
+	 		</tbody>
+		  </table>
+		 </div>		 	 
+    </div>	
+    <!--
+    	作者：n606384@163.com
+    	时间：2016-05-16
+    	描述：添加用户的框
+    -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header" id="addYH">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 id="exampleModalLabel">添加用户</h2>
+	      </div>
+	      <div class="modal-body">
+	        <form id="TJ-Form" method="post" role="form" action="">
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label" id="UserNmaeLabel">登录名：</label>
+	            <input type="text" class="form-control" id="username" name="dlm" required>
+	            <span id="UserNameSpan">*</span>
+	          </div>        
+	          <div class="form-group" id="mmdiv">
+	            <label for="message-text" class="control-label">密码：</label>
+	            <input type="password" class="form-control" id="password" name="mm" required><span>*</span>
+	            
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">姓名：</label>
+	            <input type="text" class="form-control" id="xm" name="xm">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label" id="yxLabel">邮箱：</label>
+	            <input type="text" class="form-control" id="yx" name="yx">
+	            <span id="yxSpan">*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label" id="dhLabel">电话：</label>
+	            <input type="text" class="form-control" id="dh"name="dh">
+	            <span id="dhSpan">*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">备注：</label>
+	            <input type="text" class="form-control" id="bz" name="bz">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">角色代码：</label>
+	            <select class="juesedaima" name="yhjs" id="Adds">
+	                   	<option class="form-control value="1002001">系统管理员</option>
+	                   	<option class="form-control value="1002002" selsected>系统用户</option>
+	            <select>
+	            
+	            <!--input type="text" class="form-control" id="recipient-name"-->
+	          </div>
+	          <div class="form-group" id="Addoption">
+	            <label for="message-text" class="control-label">角色备注：</label>
+	            <input type="text" value="系统用户" onfocus="this.value=''" onblur="if(this.value==''){this.value='系统用户'}" class="form-control" id="jsbz" name="jsbz">
+	             <span>*</span>         
+	          </div>
+	          <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="guanbi">关闭</button>
+		        <input type="submit" class="btn btn-primary" id="tijiao" value="提交" />
+	          </div>
+	        </form>
+	      </div>
+	      
+	    </div>
+	  </div>
+	</div>
+	<!--
+		作者：offline
+		时间：2016-04-28
+		描述：删除提示框
+	-->
+	<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel" id="modal-delete">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header" id="deleYH">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 class="modal-title" id="gridSystemModalLabel">删除信息</h2>
+	      </div>
+	      <div class="modal-body" id="bodymodal">
+	        <div class="container-fluid">
+	          <div class="row">           
+	            <div class="col-md-4 col-md-offset-4" id="InfoLabel">确定删除该条记录吗？</div>
+	          </div>          
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">取消<button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" id="queding">确定<button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal --> 
+
+       <!--
+       	作者：n606384@163.com
+       	时间：2016-05-16
+       	描述：修改汇交用户的框
+       --> 
+    <div class="modal fade" id="UpadteHJDW" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header" id="updateHjdwHeader">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 id="exampleModalLabel">修改汇交单位信息</h2>
+	      </div>
+	      <div class="modal-body">
+	        <form id="TJ-Form">     
+	          <div class="form-group" id="hjdwAdress">
+	            <label for="message-text" class="control-label">汇交单位地址</label>
+	            <input type="text" class="form-control" id="HJDWDZ" name="hjdwAdress" required>
+	            <span>*</span>	            
+	          </div>
+	          <div class="form-group" id="hjdwbm">
+	            <label for="message-text" class="control-label">汇交单位编码</label>
+	            <input type="text" class="form-control" id="HJDWBM" name="hjdwbm" required>
+	            <span>*</span>	            
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">汇交单位名称</label>
+	            <input type="text" class="form-control" id="HJDWMC" name="hjdwName">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">汇交单位性质</label>
+	            <input type="text" class="form-control" id="HJDWXZ" name="HJDWXZ">
+	            <span>*</span>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+	        <input type="submit" class="btn btn-primary" id="HJDWtijiao" value="提交" />
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!--
+    	作者：n606384@163.com
+    	时间：2016-05-16
+    	描述：修改汇交人员模态框
+    -->
+    <div class="modal fade" id="UpdteHJRYmodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header" id="updateHjryHeader">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h2 id="exampleModalLabel">修改汇交人员信息</h2>
+	      </div>
+	      <div class="modal-body">
+	        <form id="TJ-Form">     
+	          <div class="form-group" id="hjrybmdiv">
+	            <label for="message-text" class="control-label">汇交人员编码</label>
+	            <input type="text" class="form-control" id="HJRYBM" name="hjrybm" required>
+	            <span>*</span>	            
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">汇交人姓名</label>
+	            <input type="text" class="form-control" id="HJRXM" name="hjrName">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">联系电话</label>
+	            <input type="text" class="form-control" id="LXDH" name="lxdh">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">联系邮箱</label>
+	            <input type="text" class="form-control" id="LXYX" name="lxyx">
+	            <span>*</span>
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="control-label">通信地址</label>
+	            <input type="text" class="form-control" id="TXDZ" name="txdz">
+	            <span>*</span>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
+	        <input type="submit" class="btn btn-primary" id="HJRYtijiao" value="提交" />
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+      
+</div>

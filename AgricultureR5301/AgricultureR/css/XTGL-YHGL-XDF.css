@@ -1,0 +1,186 @@
+#right-yhgl-div ul,li,ol{
+	list-style: none;
+}
+.left-tag-div{
+	width: 15%;
+	position: relative;
+}
+.left-tag-div input:hover{
+	color:#0FB3D6;
+}
+.right-container-div{
+	width: 75%;
+	position: relative;
+	left: 18%;
+	top: -30%;
+}
+#YHGL-button{
+	margin: 60px 30px 30px 30px;	
+	width:163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #000000;
+	margin-left: 25%;
+}
+#XTRZ-button{
+	margin:0px 30px 30px 30px;
+	width:163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #000000;
+	margin-left: 25%;
+}
+.juesedaima{
+	width: 100px;
+}
+.right-header-div{
+	top:50px;
+	border-bottom: 1px solid #ededed;
+	height: 30px;
+}
+.right-header-div h2{
+	
+	color:#F1A01B;
+	font-size: 22px;
+	font-family: "微软雅黑";
+	
+}
+.right-header-div ul{
+	position: relative;
+}
+.pull-right{
+	
+}
+#right-yhgl-div #ulyhgl li{
+	float: right;
+	position: relative;
+	top: -25px;
+	width: 80px;
+}
+#right-hjdw-div #ulhjdw li{
+	float: right;
+	position: relative;
+	top: -25px;
+	width: 80px;
+}
+#right-hjry-div #ulyhjry li{
+	float: right;
+	position: relative;
+	top: -25px;
+	width: 80px;
+}
+.table{
+	border-color: #ededed;
+}
+#Addoption input{
+	corlor:#ededed;
+}
+.QRQX-button-div{
+	width: 400px;
+	height: 60px;
+}
+.warning{
+	display: block;
+width: 75%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #AC2925;
+border-radius: 4px;
+}
+#TJ-Form span{
+	position: relative;
+	
+}
+.modal-body .form-group label{
+	font-size: 14px;
+}
+ 
+.modal-body .cursor{
+	cursor: pointer
+}
+.modal-body .form-group span{
+	display: inline-block;
+	color: red;
+	position: absolute;
+	float: left;
+	left: 77%;
+}
+.modal-body .form-group label{
+	display: block;
+	max-width: 100%;
+	margin-bottom: 5px;
+	font-weight: 700;
+	float: left;
+}
+.modal-body .form-group input{
+	display: inline-block;
+}
+.modal-body .form-group select{
+	border-color: #E2E2E2;
+}
+.xtrzTbablecal{
+	margin: 10px;
+}
+#addYH h2{
+	font-size: 18px;
+}
+#deleYH h2{
+	font-size: 18px;
+}
+#addYH{
+	padding: 4px;
+}
+#bodymodal{
+	padding: 8px;
+}
+#yhgl-table-div{
+	top:10px;
+}
+#HJDW-button{
+	margin:0px 30px 30px 30px;
+	width:163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #000000;
+	margin-left: 25%;
+}
+#HJRY-button{
+	margin: 0px 30px 30px 30px;
+	width: 163px;
+	height: 50px;
+	position: relative;
+	background-color: #f8f8f8;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #000000;
+	margin-left: 25%;
+}
+#updateHJRY{
+	float: right;
+}
+#updateHJDW{
+	float: right;
+}
+.error-message {
+	color:red;
+}
+.warning {
+	color:#F0F;
+}
+#yx-error,#dh-error{
+	color: red;
+}

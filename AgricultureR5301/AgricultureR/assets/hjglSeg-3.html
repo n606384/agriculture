@@ -1,0 +1,298 @@
+<div style="width: 95%;height: 100%;margin: 20px auto;">
+	<ul class="nav nav-tabs hjgl_TabPane" role="tablist">
+	    <li role="presentation" class="active"><a href="#first_cggl" aria-controls="first_cggl" role="tab" data-toggle="tab">总体情况</a></li>
+	    <li role="presentation"><a href="#hjdy_cggl" aria-controls="hjdy_cggl" role="tab" data-toggle="tab">汇交成果</a></li>
+	    <li role="presentation"><a href="#zjcg_cggl" aria-controls="zjcg_cggl" role="tab" data-toggle="tab">质检成果</a></li>
+	     <li role="presentation"><a href="#hjxq_cggl" aria-controls="hjxq_cggl" role="tab" data-toggle="tab">汇交详情</a></li>
+	</ul>
+	<div id="tabContentDiv" class="tab-content">
+		<div id="first_cggl" role="tabpanel" class="tab-pane active" style="width: 100%;height: 100%;">
+			
+			<div class="cgglUpContainer">
+				<div style="width: 50%;height: 100%;margin: auto;border-right: solid 3.5px #93BA47;">
+					<div style="margin-left: 5%; width:30%; height: 100%;">
+					<span>全国已汇交县数量：<em>16</em>个</span>
+					<br />
+					<span>全国总汇交次数：<em>32</em>次</span>
+					<br />
+					<span>汇交成功率：<em>50%</em></span>
+					<br />
+					<span>总数据量大小：<em>4000</em>GB</span>
+					<br />
+					</div>
+					<div id="hjcgl_cggl" style="float:left;width: 65%;height: 100%;">
+						
+					</div>
+				</div>
+				<div  style="width: 50%;height: 100%;border-right: solid 3.5px #93BA47;">			
+					
+					<div style="margin-left:5%; width: 30%; height: 100%;">
+					<span>数据质检次数：<em>46</em>次</span>
+					<br />
+					<span>数据质检通过率：<em>72%</em>次</span>
+					<br />
+					<span>质检错误数总计：<em>210</em>个</span>
+					<br />
+					<span>累计质检数据量：<em>90321</em>GB</span>
+					<br />
+					</div>
+					<div id="zjcgl_cggl" style="width: 65%;height: 100%;">
+						
+					</div>
+				</div>
+				
+			</div>
+			<div  class="cgglBotContainer">				
+				<div id="firstPro_cggl" style="width:100%;height: 100%;"></div>
+			</div>
+			
+		</div>
+		<div id="hjdy_cggl" role="tabpanel" class="tab-pane" style="width: 100%;height: 100%;">
+			<div id="queryPane" class="queryPane_hjdy">
+				<div class="filter_tip" style="margin-left: 15px;">
+					<label for="proQuery">省：</label>
+					<select id="proQuery">
+						<option id="1" value="100000">北京市</option>
+					</select>
+					<label for="cityQuery">市：</label>
+					<select id="cityQuery">
+						<option id="2" value="100100">北京市</option>
+					</select>
+					<label for="countyQuery">县：</label>
+					<select id="countyQuery">
+						<option id="3" value="100105">北京市</option>
+					</select>
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="sTime_hjcl" >开始时间</label>
+					<input id="sTime_hjcl"  type="text" value="2016/5/25" />
+					<label for="tTime_hjcl" >结束时间</label>
+					<input id="tTime_hjcl"  type="text" value="2016/6/25" />
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="sTime_hjcl">统计指标</label>
+					<select id="indQuery">
+						<option value="100105">汇交数量</option>
+						<option value="100105">汇交次数</option>
+					</select>
+				</div>
+				
+			</div>
+			<div class="container_hjdy">
+				<div style="float:left;width: 30%;height: 100%;border-right: solid 3.5px #EDEDED;">
+					<div style="height: 100%;width: 100%;">
+						<table class="table table-striped">
+							<thead>
+				              <th colspan="3" style="text-align: center;">全国汇交单元统计情况</th>
+				            </thead>
+				            <tbody>
+				            <tr>
+				                <td>合计项</td>
+				                <td colspan = "2" style="text-align: center;">数量</td>
+				               
+				              </tr>
+				              <tr>
+				                <td>汇交单元个数总计(个):</td>
+				                <td colspan = "2" style="text-align: center;">16</td>
+				               
+				              </tr>
+				            <tr>
+				               	<td>汇交次数总计(个):</td>
+				                <td colspan = "2" style="text-align: center;">32</td>
+				            </tr>
+				            <tr>
+				                <td>汇交数据量合计(GB):</td>
+				                <td colspan = "2" style="text-align: center;">32</td>
+				            </tr>
+				            <tr>
+				              	<td colspan="3" style="text-align: center;font-family: '微软雅黑';font-weight: bold;font-style: italic;">数据分类详情</td>
+				            </tr>
+				            <tr>
+				                <td>汇交数据类型</td>
+				                <td>文件数量(个)</td>
+				                <td>数据大小(GB)</td>
+				            </tr>
+				            <tr>
+				                <td>矢量数据</td>
+				                <td>3311</td>
+				                <td>2245</td>
+				            </tr>
+				            <tr>
+				                <td>栅格数据</td>
+				                <td>4311</td>
+				                <td>6245</td>
+				            </tr>
+				            <tr>
+				                <td>汇总表格</td>
+				                <td>4311</td>
+				                <td>5245</td>
+				            </tr>
+				            <tr>
+				                <td>权属数据</td>
+				                <td>311</td>
+				                <td>245</td>
+				            </tr>
+				            <tr>
+				                <td>图件数据</td>
+				                <td>3311</td>
+				                <td>1245</td>
+				            </tr>
+				            <tr>
+				                <td>文字报告</td>
+				                <td>1311</td>
+				                <td>2245</td>
+				            </tr>
+				            <tr>
+				                <td>其他数据</td>
+				                <td>311</td>
+				                <td>245</td>
+				            </tr>
+				            </tbody>
+						</table>
+					</div>
+					
+				</div>
+				<div style="float: left;width: 70%;height: 100%;">
+					<div id="map_HJCL" style="width: 100%;height: 100%;">
+						
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div id="zjcg_cggl" role="tabpanel" class="tab-pane">
+			<div id="queryPane_ZJ" class="queryPane_hjdy">
+				<div class="filter_tip" style="margin-left: 15px;">
+					<label for="proQuery_ZJ">省：</label>
+					<select id="proQuery_ZJ">
+						<option id="1" value="100000">北京市</option>
+					</select>
+					<label for="cityQuery_ZJ">市：</label>
+					<select id="cityQuery_ZJ">
+						<option id="2" value="100100">北京市</option>
+					</select>
+					<label for="countyQuery_ZJ">县：</label>
+					<select id="countyQuery_ZJ">
+						<option id="3" value="100105">北京市</option>
+					</select>
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="sTime_hjcl_ZJ" >开始时间</label>
+					<input id="sTime_hjcl_ZJ"  type="text" value="2016/5/25" />
+					<label for="tTime_hjcl_ZJ" >结束时间</label>
+					<input id="tTime_hjcl_ZJ"  type="text" value="2016/6/25" />
+				</div>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="filter_tip">
+					<label for="indQuery_ZJ">统计指标</label>
+					<select id="indQuery_ZJ">
+						<option value="100105">汇交数量</option>
+						<option value="100105">汇交次数</option>
+					</select>
+				</div>
+				
+			</div>
+			<div class="container_hjdy">
+				<div style="float:left;width: 30%;height: 100%;border-right: solid 3.5px #EDEDED;">
+					<div style="height: 100%;width: 100%;">
+						<table class="table table-striped">
+							<thead>
+				              <th colspan="3" style="text-align: center;">全国汇交数据质检情况统计</th>
+				            </thead>
+				            <tbody>
+				            <tr>
+				                <td>合计项</td>
+				                <td colspan = "2" style="text-align: center;">数量</td>
+				               
+				              </tr>
+				              <tr>
+				                <td>提交质检县个数总计(个):</td>
+				                <td colspan = "2" style="text-align: center;">16</td>
+				               
+				              </tr>
+				            <tr>
+				               	<td>质检次数合计(次):</td>
+				                <td colspan = "2" style="text-align: center;">32</td>
+				            </tr>
+				            <tr>
+				                <td>质检通过率:</td>
+				                <td colspan = "2" style="text-align: center;">32%</td>
+				            </tr>
+				            <tr>
+				              	<td colspan="3" style="text-align: center;font-family: '微软雅黑';font-weight: bold;font-style: italic;">数据质检统计概况</td>
+				            </tr>
+				            <tr>
+				                <td>质检大类</td>
+				                <td>错误数量(个)</td>
+				                <td>规范描述</td>
+				            </tr>
+				            <tr>
+				                <td>数据完整性</td>
+				                <td>3311</td>
+				                <td>2245</td>
+				            </tr>
+				            <tr>
+				                <td>矢量数据</td>
+				                <td>4311</td>
+				                <td>6245</td>
+				            </tr>
+				            <tr>
+				                <td>权属数据</td>
+				                <td>4311</td>
+				                <td>5245</td>
+				            </tr>
+				            <tr>
+				                <td>栅格数据元数据</td>
+				                <td>311</td>
+				                <td>245</td>
+				            </tr>
+				            <tr>
+				                <td>数据一致性</td>
+				                <td>3311</td>
+				                <td>1245</td>
+				            </tr>
+				            <tr>
+				                <td>汇交材料一致性</td>
+				                <td>1311</td>
+				                <td>2245</td>
+				            </tr>				            
+				            </tbody>
+						</table>
+					</div>
+					
+				</div>
+				<div style="float: left;width: 70%;height: 100%;">
+					<div id="map_ZJCG" style="width: 100%;height: 100%;">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="hjxq_cggl" role="tabpanel" class="tab-pane">
+			质检成果汇交管理
+			
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+</div>
+<!-- Modal -->
+<div class="modal fade" id="dialogModalSeg_3" tabindex="-1" role="dialog" aria-labelledby="modalTitleSeg_3" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="modalTitleSeg_3" class="modal-title"></h4>
+      </div>
+      <div id="modalContentSeg_3" class="modal-body">
+         
+      </div>
+      <div id="modalFooterSeg_3" class="modal-footer">         
+        <button type="button" class="btn btn-default" data-dismiss="modal">确  定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
